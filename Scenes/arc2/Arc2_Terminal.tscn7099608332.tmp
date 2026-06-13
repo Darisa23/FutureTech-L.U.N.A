@@ -1,0 +1,344 @@
+[gd_scene load_steps=12 format=3 uid="uid://dxktmwrehshtn"]
+
+[ext_resource type="Script" uid="uid://dm4e1jwam25e8" path="res://Scripts/arc_2_terminal.gd" id="1_t33kg"]
+[ext_resource type="Texture2D" uid="uid://d2lb4g48v48ju" path="res://assets/circle.png" id="2_up3yc"]
+[ext_resource type="Shader" uid="uid://dousyyg1e5m14" path="res://Scenes/arc2/colorsito.gdshader" id="3_dun0a"]
+[ext_resource type="Texture2D" uid="uid://bd3ja7hrhg082" path="res://assets/Captura de pantalla 2026-06-12 133825.png" id="3_ygd2p"]
+[ext_resource type="FontFile" uid="uid://b8fr3did4cfeq" path="res://assets/fonts/FiraCode-VariableFont_wght.ttf" id="4_dun0a"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lxagk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ygd2p"]
+shader = ExtResource("3_dun0a")
+shader_parameter/nuevo_color = Color(1, 0.192157, 0.192157, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dun0a"]
+shader = ExtResource("3_dun0a")
+shader_parameter/nuevo_color = Color(0.494118, 0.85098, 0.341176, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lxagk"]
+shader = ExtResource("3_dun0a")
+shader_parameter/nuevo_color = Color(1, 0.870588, 0.34902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygd2p"]
+bg_color = Color(0.592157, 0.466667, 0.862745, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dun0a"]
+bg_color = Color(0.313726, 0.45098, 0.686275, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Arc2Terminal" type="Node2D"]
+script = ExtResource("1_t33kg")
+
+[node name="Background" type="ColorRect" parent="."]
+visibility_layer = 513
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.0627451, 0.0588235, 0.121569, 1)
+
+[node name="encabezado" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="encabezado"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 38.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="TitulitoLabel" type="Label" parent="encabezado"]
+material = SubResource("CanvasItemMaterial_lxagk")
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 1156.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0.45098, 0.45098, 0.45098, 1)
+theme_override_font_sizes/font_size = 18
+text = "Luna diagnostic terminal - arc II"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="r" type="Label" parent="encabezado/TitulitoLabel"]
+material = SubResource("CanvasItemMaterial_lxagk")
+layout_mode = 0
+offset_left = 967.0
+offset_right = 1150.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(0.45098, 0.45098, 0.45098, 1)
+theme_override_font_sizes/font_size = 14
+text = "reconstruction mode
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="circulito" type="TextureRect" parent="encabezado"]
+modulate = Color(0.882353, 1, 1, 1)
+top_level = true
+light_mask = 130
+material = SubResource("ShaderMaterial_ygd2p")
+layout_mode = 0
+offset_left = 16.0
+offset_top = 11.0
+offset_right = 31.0
+offset_bottom = 26.0
+texture = ExtResource("2_up3yc")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="circulito2" type="TextureRect" parent="encabezado"]
+modulate = Color(0.882353, 1, 1, 1)
+top_level = true
+light_mask = 130
+material = SubResource("ShaderMaterial_dun0a")
+layout_mode = 0
+offset_left = 61.0
+offset_top = 11.0
+offset_right = 76.0
+offset_bottom = 26.0
+texture = ExtResource("2_up3yc")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="circulito3" type="TextureRect" parent="encabezado"]
+modulate = Color(0.882353, 1, 1, 1)
+top_level = true
+light_mask = 130
+material = SubResource("ShaderMaterial_lxagk")
+layout_mode = 0
+offset_left = 39.0
+offset_top = 11.0
+offset_right = 54.0
+offset_bottom = 26.0
+texture = ExtResource("2_up3yc")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="BarritaInfo" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 4)
+offset_left = 5.0
+offset_top = 54.0
+offset_right = 1152.0
+offset_bottom = 83.0
+color = Color(0.117647, 0.121569, 0.243137, 1)
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="PanelContainer" parent="BarritaInfo"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 0
+offset_left = 10.0
+offset_right = 91.0
+offset_bottom = 28.0
+tooltip_text = "
+"
+theme_override_styles/panel = SubResource("StyleBoxFlat_ygd2p")
+metadata/_edit_lock_ = true
+
+[node name="critical" type="Label" parent="BarritaInfo/ColorRect"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "CRITICAL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect2" type="PanelContainer" parent="BarritaInfo"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+offset_left = 108.0
+offset_right = 189.0
+offset_bottom = 28.0
+tooltip_text = "
+"
+theme_override_styles/panel = SubResource("StyleBoxFlat_dun0a")
+metadata/_edit_lock_ = true
+
+[node name="block" type="Label" parent="BarritaInfo/ColorRect2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "BLOCK .../4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="BarritaInfo"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 6.0
+offset_right = 381.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.45098, 0.45098, 0.45098, 1)
+theme_override_font_sizes/font_size = 12
+text = "> Restoring activation filters..."
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+metadata/_edit_lock_ = true
+
+[node name="Acc" type="Label" parent="BarritaInfo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.686
+anchor_top = 0.845
+anchor_right = 0.686
+anchor_bottom = 0.845
+offset_left = -72.842
+offset_top = -18.505
+offset_right = 30.158
+offset_bottom = 30.495
+theme_override_colors/font_color = Color(0.45098, 0.45098, 0.45098, 1)
+theme_override_font_sizes/font_size = 12
+text = "ACCURACY: 
+"
+metadata/_edit_lock_ = true
+
+[node name="Hnts" type="Label" parent="BarritaInfo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.686
+anchor_top = 0.845
+anchor_right = 0.686
+anchor_bottom = 0.845
+offset_left = 59.158
+offset_top = -18.505
+offset_right = 162.158
+offset_bottom = 30.495
+theme_override_colors/font_color = Color(0.45098, 0.45098, 0.45098, 1)
+theme_override_font_sizes/font_size = 12
+text = "HINTS USED: 
+"
+metadata/_edit_lock_ = true
+
+[node name="inv" type="Label" parent="BarritaInfo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.686
+anchor_top = 0.845
+anchor_right = 0.686
+anchor_bottom = 0.845
+offset_left = 187.158
+offset_top = -18.505
+offset_right = 290.158
+offset_bottom = 30.495
+theme_override_colors/font_color = Color(0.45098, 0.45098, 0.45098, 1)
+theme_override_font_sizes/font_size = 12
+text = "INVASION IN:
+"
+metadata/_edit_lock_ = true
+
+[node name="code" type="ColorRect" parent="."]
+offset_left = -1.0
+offset_top = 84.0
+offset_right = 857.0
+offset_bottom = 647.0
+color = Color(0.0901961, 0.0901961, 0.141176, 1)
+
+[node name="Label" type="Label" parent="code"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 18.0
+offset_right = 355.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0.45098, 0.45098, 0.45098, 1)
+theme_override_font_sizes/font_size = 14
+text = "ACTIVATION FILTERS - RESTORE PROTOCOL"
+
+[node name="Label" type="Label" parent="code/Label"]
+layout_mode = 0
+offset_left = 858.0
+offset_top = 1.0
+offset_right = 1188.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.45098, 0.45098, 0.45098, 1)
+theme_override_font_sizes/font_size = 14
+text = "LUNA STATUS
+"
+
+[node name="InputField" type="LineEdit" parent="code"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 455.0
+offset_right = 814.0
+offset_bottom = 495.0
+theme_override_colors/caret_color = Color(0.625597, 0.625597, 0.625597, 1)
+theme_override_colors/font_placeholder_color = Color(0.55, 0.46255, 0.451, 0.368627)
+theme_override_font_sizes/font_size = 12
+placeholder_text = "CONTINUE TYPING THE CODE ABOVE..."
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="CodeContainer" type="HBoxContainer" parent="code"]
+offset_left = 77.0
+offset_top = 66.0
+offset_right = 760.0
+offset_bottom = 416.0
+
+[node name="LineNumbers" type="RichTextLabel" parent="code/CodeContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_selected_color = Color(0.333333, 0.333333, 0.333333, 1)
+theme_override_constants/line_separation = 3
+theme_override_fonts/normal_font = ExtResource("4_dun0a")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+
+[node name="CodeDisplay" type="RichTextLabel" parent="code/CodeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0, 1, 0.533333, 1)
+theme_override_constants/line_separation = 3
+theme_override_fonts/normal_font = ExtResource("4_dun0a")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NarrativeLabel" type="Label" parent="."]
+offset_left = 916.0
+offset_top = 216.0
+offset_right = 1115.0
+offset_bottom = 490.0
+theme_override_colors/font_color = Color(1, 0.419608, 0.419608, 1)
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 3
+
+[node name="FeedbackLabel" type="Label" parent="."]
+offset_left = 888.0
+offset_top = 557.0
+offset_right = 1131.0
+offset_bottom = 587.0
+theme_override_colors/font_color = Color(1, 0.666667, 0, 1)
+autowrap_mode = 3
+
+[node name="ProgressLabel" type="Label" parent="."]
+offset_left = 106.0
+offset_top = 7.0
+offset_right = 406.0
+offset_bottom = 37.0
+theme_override_colors/font_color = Color(0.533333, 0.533333, 0.533333, 1)
+
+[node name="LunaStatus" type="ColorRect" parent="."]
+offset_left = 1027.0
+offset_top = 123.0
+offset_right = 1127.0
+offset_bottom = 183.0
+color = Color(0.290196, 0.619608, 1, 1)
+
+[node name="CapturaDePantalla2026-06-12133825" type="Sprite2D" parent="."]
+position = Vector2(1515, 620)
+scale = Vector2(0.842336, 0.831387)
+texture = ExtResource("3_ygd2p")
