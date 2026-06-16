@@ -282,6 +282,7 @@ deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
 [node name="CodeContainer" type="HBoxContainer" parent="code"]
+layout_mode = 0
 offset_left = 77.0
 offset_top = 93.0
 offset_right = 760.0
