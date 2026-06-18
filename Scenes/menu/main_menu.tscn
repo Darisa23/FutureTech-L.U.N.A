@@ -1,15 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://dss87kqoda2my"]
+[gd_scene load_steps=9 format=3 uid="uid://dss87kqoda2my"]
 
-[ext_resource type="Shader" uid="uid://clvg7ks11bj0x" path="res://Scenes/menu/main_menu.gdshader" id="1_ufr4i"]
 [ext_resource type="Script" uid="uid://dcdsp05al3bq8" path="res://Scenes/menu/main_menu.gd" id="1_ygw4n"]
 [ext_resource type="Shader" uid="uid://b8h33xjofcq4u" path="res://Scenes/menu/main_menu1.gdshader" id="2_uffod"]
+[ext_resource type="Shader" uid="uid://dgcmdvn56ritj" path="res://shaders/night_sky.gdshader" id="2_ygw4n"]
 [ext_resource type="Script" uid="uid://sb041q3o7iy4" path="res://Scenes/menu/glow_particles.gd" id="3_uffod"]
+[ext_resource type="FontFile" uid="uid://3u1vp3tak8fm" path="res://assets/fonts/Aretha Bridge.ttf" id="5_655o3"]
+[ext_resource type="PackedScene" uid="uid://dpaun1u2l2hvf" path="res://Characters/Luna/Luna.tscn" id="6_kwgaw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ygw4n"]
-shader = ExtResource("1_ufr4i")
-shader_parameter/line_color = Color(0.29, 0.62, 1, 0.03)
-shader_parameter/grid_size = 40.0
-shader_parameter/screen_size = Vector2(1152, 648)
+shader = ExtResource("2_ygw4n")
+shader_parameter/color_top = Color(0.298, 0.169, 0.412, 1)
+shader_parameter/color_mid = Color(0.651, 0.38, 0.678, 1)
+shader_parameter/color_bottom = Color(0.651, 0.71, 0.992, 1)
+shader_parameter/nebula_color_a = Color(0.988, 0.651, 0.82, 1)
+shader_parameter/nebula_color_b = Color(0.714, 0.937, 0.984, 1)
+shader_parameter/star_density = 0.6
+shader_parameter/nebula_strength = 0.35
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_655o3"]
 shader = ExtResource("2_uffod")
@@ -76,12 +82,16 @@ offset_bottom = 40.0
 
 [node name="GameTag" type="Label" parent="UILayer/UIControl/LeftPanel"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_655o3")
 
 [node name="GameTitle" type="Label" parent="UILayer/UIControl/LeftPanel"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_655o3")
+theme_override_font_sizes/font_size = 80
 
 [node name="GameSub" type="Label" parent="UILayer/UIControl/LeftPanel"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_655o3")
 
 [node name="ButtonGroup" type="VBoxContainer" parent="UILayer/UIControl/LeftPanel"]
 layout_mode = 2
@@ -114,6 +124,7 @@ offset_bottom = 23.0
 text = "×"
 
 [node name="RightPanel" type="Panel" parent="UILayer/UIControl"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -148,3 +159,9 @@ offset_left = 415.0
 offset_top = 351.0
 offset_right = 455.0
 offset_bottom = 374.0
+
+[node name="LUNA" parent="." instance=ExtResource("6_kwgaw")]
+position = Vector2(951, 159)
+scale = Vector2(0.1, 0.1)
+
+[connection signal="pressed" from="UILayer/UIControl/LeftPanel/ButtonGroup/PlayButton" to="." method="_on_play_button_pressed"]

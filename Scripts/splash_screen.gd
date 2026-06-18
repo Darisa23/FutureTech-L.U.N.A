@@ -115,7 +115,7 @@ func _skip_to_menu():
 	if skipped:
 		return
 	skipped = true
-	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/menu/main_menu.tscn")
 
 func _play_sequence():
 	# 1. La luna sube y aparece (fade + movimiento con ease)
@@ -137,6 +137,7 @@ func _play_sequence():
 
 	# 3. Revelar título
 	await _reveal_title_letter_by_letter("Project L.U.N.A")
+	await get_tree().create_timer(5).timeout
 	_skip_to_menu()
 
 func _reveal_title_letter_by_letter(text: String):

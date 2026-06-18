@@ -7,6 +7,8 @@ var tiempo_temblor: float = 0.0
 var fuerza_temblor: float = 0.0
 
 func _ready():
+	Dialogic.timeline_ended.connect(_al_terminar_introduccion)
+	
 	# Escuchamos la señal de Dialogic
 	Dialogic.signal_event.connect(_al_recibir_senal_dialogic)
 	
@@ -32,3 +34,6 @@ func _process(delta: float):
 		# Centra la cámara cuando termina el temblor
 		camara.offset = Vector2.ZERO
 	# FUNCIÓN REQUERIDA POR DIALOGIC PARA RETRATOS PERSONALIZADOS
+	
+func _al_terminar_introduccion():
+	get_tree().change_scene_to_file("res://Scenes/arc1/concept_intro1.tscn")

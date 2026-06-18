@@ -192,7 +192,10 @@ func _on_next_pressed():
 	else:
 		feedback_label.text = "¡Completaste el módulo! LUNA puede distinguir amigos de enemigos."
 		feedback_label.add_theme_color_override("font_color", Color("#00ff88"))
-		next_button.visible = false
+		next_button.visible = true
+		await get_tree().create_timer(3).timeout
+		get_tree().change_scene_to_file("res://Scenes/arc2/Arc2_Terminal.tscn")
+
 
 func _draw():
 	var input_nodes = [Vector2(420, 200), Vector2(420, 350)]

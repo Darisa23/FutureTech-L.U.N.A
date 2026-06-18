@@ -253,7 +253,7 @@ func _on_activate_pressed():
 		next_button.text = "Continuar →"
 		next_button.visible = true
 
-	elif stage == "ready2" or stage == "ready2_seen":
+	elif stage == "ready2" or stage == "ready2_seen" or stage == "complete":
 		lit_hidden_lines = true
 		await _run_pulse_hidden()
 		stage = "ready2_seen"
@@ -270,11 +270,23 @@ func _on_next_pressed():
 		add_neuron_button.visible = true
 		stage = "adding_hidden"
 		description_label.text = "Agrega neuronas de pensamiento a LUNA. Necesita al menos 2 para empezar a reconocer patrones complejos."
+	
 	elif stage == "ready2_seen":
+		# Cuando ve la animación con las neuronas ocultas, habilitamos el paso final
 		next_button.visible = false
 		activate_button.visible = false
 		add_neuron_button.visible = false
 		stage = "complete"
+		# Forzamos a que avance directo o puedes mostrar un mensaje final antes del cambio
+		_cambiar_a_siguiente_escena()
+		
+	elif stage == "complete":
+		_cambiar_a_siguiente_escena()
+
+func _cambiar_a_siguiente_escena():
+	var ruta_siguiente_escena = "res://scenes/arc1/concept_intro2.tscn" 
+	
+	get_tree().change_scene_to_file(ruta_siguiente_escena)
 
 func _on_add_neuron_pressed():
 	n_hidden += 1
