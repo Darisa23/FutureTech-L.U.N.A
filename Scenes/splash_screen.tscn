@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpcdaskan0c8i"]
+
+[ext_resource type="Script" uid="uid://kw7usw2geevq" path="res://Scripts/splash_screen.gd" id="1_h5jmx"]
+[ext_resource type="Texture2D" uid="uid://jj4usd4adwth" path="res://assets/Luna.png" id="1_wwf30"]
+[ext_resource type="Shader" uid="uid://dgcmdvn56ritj" path="res://shaders/night_sky.gdshader" id="2_hnr0x"]
+[ext_resource type="FontFile" uid="uid://3u1vp3tak8fm" path="res://assets/fonts/Aretha Bridge.ttf" id="3_hnr0x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8jcts"]
+shader = ExtResource("2_hnr0x")
+shader_parameter/color_top = Color(0.298, 0.169, 0.412, 1)
+shader_parameter/color_mid = Color(0.651, 0.38, 0.678, 1)
+shader_parameter/color_bottom = Color(0.651, 0.71, 0.992, 1)
+shader_parameter/nebula_color_a = Color(0.988, 0.651, 0.82, 1)
+shader_parameter/nebula_color_b = Color(0.714, 0.937, 0.984, 1)
+shader_parameter/star_density = 0.5
+shader_parameter/nebula_strength = 0.35
+
+[node name="SplashScreen" type="Node2D"]
+script = ExtResource("1_h5jmx")
+
+[node name="SkyBackground" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_8jcts")
+offset_right = 1150.0
+offset_bottom = 644.0
+color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="CloudsLayer" type="Node2D" parent="."]
+
+[node name="LunaSprite" type="Sprite2D" parent="."]
+position = Vector2(554, 293)
+texture = ExtResource("1_wwf30")
+
+[node name="StarsContainer" type="GPUParticles2D" parent="."]
+position = Vector2(546, 333)
+
+[node name="TitleLabel" type="RichTextLabel" parent="."]
+offset_left = 173.0
+offset_top = 316.0
+offset_right = 1104.0
+offset_bottom = 629.0
+theme_override_fonts/normal_font = ExtResource("3_hnr0x")
+theme_override_font_sizes/normal_font_size = 125
+text = "Project L.U.N.A
+"
+
+[node name="SkipHint" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+metadata/_edit_use_anchors_ = true

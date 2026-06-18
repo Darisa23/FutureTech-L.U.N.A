@@ -261,4 +261,3 @@ text = "▶ ACTIVAR A LUNA"
 [node name="LUNA" parent="." instance=ExtResource("4_5x6gr")]
 position = Vector2(982, 300)
 scale = Vector2(0.11, 0.11)
-script = null

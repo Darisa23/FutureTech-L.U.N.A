@@ -35,6 +35,7 @@ var challenge_solved = false
 @onready var feedback_label = $FeedbackLabel
 @onready var next_button = $NextButton
 @onready var princess_sprite = $LunaSprite
+@onready var luna = $LUNA
 @onready var creature_sprite = $CreatureSprite
 @onready var verify_button = $VerifyButton
 
@@ -69,6 +70,7 @@ func _load_challenge(index: int):
 	_set_creature_for_target(c["target"])
 	creature_sprite.play("approach")
 	princess_sprite.play("idle")
+	luna.get_node("AnimationPlayer").play("idle")
 
 	_update_preview()
 	_animate_approach()
@@ -127,7 +129,7 @@ func _build_sliders():
 			var val_label = Label.new()
 			val_label.text = "%.2f" % network.weights_ih[row][col]
 			val_label.custom_minimum_size = Vector2(45, 0)
-			val_label.add_theme_color_override("font_color", Color.YELLOW)
+			val_label.add_theme_color_override("font_color", Color.PALE_VIOLET_RED)
 			val_label.name = "ValLabel_%d_%d" % [row, col]
 			container.add_child(val_label)
 
@@ -163,7 +165,7 @@ func _build_sliders():
 		var val_label = Label.new()
 		val_label.text = "%.2f" % network.weights_ho[row][0]
 		val_label.custom_minimum_size = Vector2(45, 0)
-		val_label.add_theme_color_override("font_color", Color.YELLOW)
+		val_label.add_theme_color_override("font_color", Color.PALE_VIOLET_RED)
 		val_label.name = "ValLabelO_%d" % row
 		container.add_child(val_label)
 
@@ -257,10 +259,14 @@ func _play_success(target: String):
 	match target:
 		"ENEMIGO":
 			princess_sprite.play("attack")
+			luna.get_node("AnimationPlayer").play("ataque")
+			
 			creature_sprite.play("death")
 			feedback_label.text = "¡LUNA identificó al enemigo!"
 		"ALIADO":
 			princess_sprite.play("jump")
+			luna.get_node("AnimationPlayer").play("idle")
+			
 			creature_sprite.play("run")
 			feedback_label.text = "¡LUNA reconoció a su aliado!"
 		_:
@@ -272,6 +278,8 @@ func _play_success(target: String):
 	await get_tree().create_timer(0.3).timeout
 	
 	princess_sprite.play("idle")
+	luna.get_node("AnimationPlayer").play("idle")
+	
 
 	await get_tree().create_timer(1.0).timeout
 	next_button.visible = true
@@ -285,6 +293,8 @@ func _play_failure(target: String):
 			#await creature_sprite.animation_finished
 		"ALIADO":
 			princess_sprite.play("attack")
+			luna.get_node("AnimationPlayer").play("ataque")
+			
 			feedback_label.text = "LUNA atacó a un aliado por error."
 			#await princess_sprite.animation_finished
 			creature_sprite.play("death")
@@ -297,6 +307,8 @@ func _play_failure(target: String):
 	# Reset para reintentar
 	creature_sprite.play("approach")
 	princess_sprite.play("idle")
+	luna.get_node("AnimationPlayer").play("idle")
+	
 	verify_button.disabled = false
 
 func _on_weight_ih_changed(row: int, col: int, value: float):

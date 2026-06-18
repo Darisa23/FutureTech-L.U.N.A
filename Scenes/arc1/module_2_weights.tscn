@@ -1,10 +1,12 @@
-[gd_scene load_steps=95 format=3 uid="uid://du5230fvs6p5y"]
+[gd_scene load_steps=99 format=3 uid="uid://du5230fvs6p5y"]
 
 [ext_resource type="Script" uid="uid://bcarqfyh8r4tr" path="res://Scripts/module_2_weights.gd" id="1_uxnbn"]
 [ext_resource type="Texture2D" uid="uid://vtne4d6h1jls" path="res://assets/Princess/Princess-Attack2_00.png" id="2_cee24"]
 [ext_resource type="Shader" uid="uid://0yp3sp6tc26a" path="res://shaders/depth_fog.gdshader" id="2_cmswi"]
 [ext_resource type="Texture2D" uid="uid://dm4tvdv551uqx" path="res://assets/Princess/Princess-Attack2_01.png" id="3_kygku"]
-[ext_resource type="Texture2D" uid="uid://bria7m3wujfhv" path="res://shaders/b4c9cc87d9836aab927fffe65a4826b1.jpg" id="3_wtwu6"]
+[ext_resource type="Texture2D" uid="uid://bct45ulkehw1w" path="res://assets/Backgrounds/bg_training_grounds.png" id="3_yxbc3"]
+[ext_resource type="FontFile" uid="uid://b8fr3did4cfeq" path="res://assets/fonts/FiraCode-VariableFont_wght.ttf" id="4_1lix8"]
+[ext_resource type="StyleBox" uid="uid://dm4jdb8jt30y1" path="res://assets/cositoestilo.tres" id="4_60jxt"]
 [ext_resource type="Texture2D" uid="uid://c71tposeve05v" path="res://assets/Princess/Princess-Attack2_02.png" id="4_cmswi"]
 [ext_resource type="Texture2D" uid="uid://bd43ybpiod8yy" path="res://assets/Princess/Princess-Attack2_03.png" id="5_wtwu6"]
 [ext_resource type="Texture2D" uid="uid://buxrr2tnj2lit" path="res://assets/Princess/Princess-Attack2_04.png" id="6_qpjid"]
@@ -92,6 +94,7 @@
 [ext_resource type="Texture2D" uid="uid://ss75iy8b6toy" path="res://assets/Princess/Princess-Jump_18.png" id="90_eaxcn"]
 [ext_resource type="Texture2D" uid="uid://chy74y00x4clj" path="res://assets/Princess/Princess-Jump_19.png" id="91_u1dnv"]
 [ext_resource type="SpriteFrames" uid="uid://bmyhbeg8y6rvm" path="res://assets/sprites/confused_frames.tres" id="92_2mxyl"]
+[ext_resource type="PackedScene" uid="uid://dpaun1u2l2hvf" path="res://Characters/Luna/Luna.tscn" id="93_60jxt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qpjid"]
 shader = ExtResource("2_cmswi")
@@ -101,10 +104,26 @@ shader_parameter/horizon_y = 0.164
 shader_parameter/vanish_x = 0.511
 shader_parameter/fire_intensity = 1.022
 shader_parameter/fire_speed = 0.528
-shader_parameter/fire_color_core = Color(1, 0.9, 0.3, 1)
-shader_parameter/fire_color_mid = Color(1, 0.4, 0.05, 1)
-shader_parameter/fire_color_edge = Color(0.6, 0.05, 0, 1)
+shader_parameter/fire_color_core = Color(0.890638, 0.483299, 1, 1)
+shader_parameter/fire_color_mid = Color(0.534774, 0.417382, 0.627673, 1)
+shader_parameter/fire_color_edge = Color(0.306312, 0.289652, 0.470943, 1)
 shader_parameter/vignette_strength = 0.196
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgr6f"]
+content_margin_left = 30.0
+content_margin_top = 15.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.117647, 0.121569, 0.243137, 1)
+border_width_left = 7
+border_color = Color(0.851477, 0.612925, 0.980352, 1)
+border_blend = true
+corner_radius_top_left = 13
+corner_radius_top_right = 13
+corner_radius_bottom_right = 13
+corner_radius_bottom_left = 13
+corner_detail = 15
+expand_margin_bottom = 10.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_glr36"]
 animations = [{
@@ -393,44 +412,51 @@ script = ExtResource("1_uxnbn")
 
 [node name="Background" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_qpjid")
-offset_right = 1152.0
-offset_bottom = 648.0
-texture = ExtResource("3_wtwu6")
+offset_right = 1150.0
+offset_bottom = 650.0
+texture = ExtResource("3_yxbc3")
+expand_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="NetworkVisual" type="Node2D" parent="."]
-position = Vector2(400, 100)
+position = Vector2(419, 90)
 
 [node name="SlidersPanel" type="VBoxContainer" parent="."]
-offset_left = 828.0
-offset_top = 131.0
-offset_right = 1128.0
-offset_bottom = 531.0
+offset_left = 808.0
+offset_top = 178.0
+offset_right = 1108.0
+offset_bottom = 578.0
 
 [node name="OutputLabel" type="Label" parent="."]
-offset_left = 229.0
-offset_top = 597.0
-offset_right = 429.0
-offset_bottom = 637.0
+offset_left = 19.0
+offset_top = 541.0
+offset_right = 255.0
+offset_bottom = 578.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_1lix8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lgr6f")
 text = "LUNA: ?"
 
 [node name="DescriptionLabel" type="Label" parent="."]
-offset_left = 78.0
-offset_top = 67.0
-offset_right = 358.0
-offset_bottom = 147.0
+offset_left = 98.0
+offset_top = 34.0
+offset_right = 1088.0
+offset_bottom = 145.0
+theme_override_fonts/font = ExtResource("4_1lix8")
+theme_override_styles/normal = ExtResource("4_60jxt")
 
 [node name="FeedbackLabel" type="Label" parent="."]
-offset_left = 56.0
-offset_top = 127.0
-offset_right = 820.0
-offset_bottom = 187.0
+offset_left = 126.0
+offset_top = 99.0
+offset_right = 890.0
+offset_bottom = 159.0
+theme_override_fonts/font = ExtResource("4_1lix8")
 
 [node name="NextButton" type="Button" parent="."]
-offset_left = 994.0
-offset_top = 576.0
-offset_right = 1098.0
-offset_bottom = 607.0
+offset_left = 1013.0
+offset_top = 605.0
+offset_right = 1117.0
+offset_bottom = 636.0
 text = "Siguiente -->
 "
 
@@ -438,14 +464,15 @@ text = "Siguiente -->
 anchors_preset = -1
 anchor_left = -2.432
 anchor_top = -3.388
-offset_left = 998.0
-offset_top = 519.0
-offset_right = 1102.0
-offset_bottom = 550.0
+offset_left = 1012.0
+offset_top = 564.0
+offset_right = 1116.0
+offset_bottom = 595.0
 text = "Verify
 "
 
 [node name="LunaSprite" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(285, 384)
 scale = Vector2(0.873585, 0.888715)
 sprite_frames = SubResource("SpriteFrames_glr36")
@@ -453,10 +480,14 @@ animation = &"jump"
 frame_progress = 0.946925
 
 [node name="CreatureSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(678.25, 469.593)
+position = Vector2(816, 478)
 scale = Vector2(0.516949, 0.646203)
 sprite_frames = ExtResource("92_2mxyl")
 animation = &"approach"
+
+[node name="LUNA" parent="." instance=ExtResource("93_60jxt")]
+position = Vector2(366, 335)
+scale = Vector2(0.16, 0.16)
 
 [connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
 [connection signal="pressed" from="VerifyButton" to="." method="_on_verify_button_pressed"]
