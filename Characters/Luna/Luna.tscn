@@ -1,0 +1,277 @@
+[gd_scene load_steps=22 format=3 uid="uid://dpaun1u2l2hvf"]
+
+[ext_resource type="Texture2D" uid="uid://b2iesy68jcn7h" path="res://assets/LUNA/torso.png" id="2_tqmi2"]
+[ext_resource type="Texture2D" uid="uid://dnbip2onjy08k" path="res://assets/LUNA/arm_right.png" id="3_gvhny"]
+[ext_resource type="Texture2D" uid="uid://ba1y0ut4f8dna" path="res://assets/LUNA/head_base.png" id="4_yu6yq"]
+[ext_resource type="Texture2D" uid="uid://cwhodivf2nkoq" path="res://assets/LUNA/hair_back_saturated.png" id="5_pbp3w"]
+[ext_resource type="Texture2D" uid="uid://cpaydgdf64yhe" path="res://assets/LUNA/eyebrows.png" id="6_pjgbl"]
+[ext_resource type="Texture2D" uid="uid://ps1pfioh4n38" path="res://assets/LUNA/eyes_happy.png" id="7_ipelg"]
+[ext_resource type="Texture2D" uid="uid://c2u6lb20ffwbl" path="res://assets/LUNA/shade_face.png" id="8_e0cdc"]
+[ext_resource type="Texture2D" uid="uid://c2gv2ds7dgsbj" path="res://assets/LUNA/mouth_happy.png" id="9_3uc72"]
+[ext_resource type="Texture2D" uid="uid://b14f2jxp3mf10" path="res://assets/LUNA/top_saturated.png" id="10_fimoe"]
+[ext_resource type="Texture2D" uid="uid://belni386ovp1b" path="res://assets/LUNA/skirt_front.png" id="11_dlmos"]
+[ext_resource type="Texture2D" uid="uid://cdfdmo4aek2c6" path="res://assets/LUNA/skirt_back_stars.png" id="12_4jxb3"]
+[ext_resource type="Texture2D" uid="uid://d7shhby8ymrn" path="res://assets/LUNA/leg_left.png" id="13_mbcrw"]
+[ext_resource type="Texture2D" uid="uid://c72k57dsx1vs5" path="res://assets/LUNA/leg_right.png" id="14_7bg5u"]
+[ext_resource type="Texture2D" uid="uid://dp1h5jn4hm6ur" path="res://assets/LUNA/arm_left.png" id="15_1hp7b"]
+[ext_resource type="Texture2D" uid="uid://d1cbkj3fo3736" path="res://assets/LUNA/staff_full.png" id="16_bhre0"]
+[ext_resource type="Texture2D" uid="uid://b21mdgyijdslc" path="res://assets/LUNA/eyes_sad.png" id="17_f7ly4"]
+[ext_resource type="Texture2D" uid="uid://bfabh7cca2c2x" path="res://assets/LUNA/eyes_closed.png" id="18_8nq0o"]
+
+[sub_resource type="GDScript" id="GDScript_ldgj3"]
+script/source = "@tool
+extends DialogicPortrait # O Node2D, dependiendo de lo que sea la raíz de LUNA
+
+
+# 2. PRECARGAMOS LAS TEXTURAS
+# Ojos
+var tex_eyes_happy = preload(\"res://assets/LUNA/eyes_happy.png\")
+var tex_eyes_sad = preload(\"res://assets/LUNA/eyes_sad.png\")
+var tex_eyes_closed = preload(\"res://assets/LUNA/eyes_closed.png\")
+
+# Bocas
+var tex_mouth_happy = preload(\"res://assets/LUNA/mouth_happy.png\")
+var tex_mouth_sad = preload(\"res://assets/LUNA/mouth_sad.png\")
+var tex_mouth_open_happy = preload(\"res://assets/LUNA/mouth_open_happy.png\")
+var tex_mouth_open_neutral = preload(\"res://assets/LUNA/mouth_open_neutral.png\")
+
+# cabello con saturación
+var tex_hair_back_sat = preload(\"res://assets/LUNA/hair_back_saturated.png\")
+var tex_hair_back_desat = preload(\"res://assets/LUNA/hair_back_desaturated.png\")
+var tex_top_sat = preload(\"res://assets/LUNA/top_saturated.png\")
+var tex_top_desat = preload(\"res://assets/LUNA/top_desaturated.png\")
+
+# cetros
+var tex_staff_full =  preload(\"res://assets/LUNA/staff_full.png\")
+var tex_staff_empty = preload(\"res://assets/LUNA/staff_empty.png\")
+
+
+
+# 3. LA FUNCIÓN QUE LEE DIALOGIC
+func _update_portrait(_character,portrait_name: String):
+	# portrait_name llegará como \"feliz_saturada\" o \"triste_desaturada\"
+	# Lo dividimos por el guion bajo para obtener emoción y estado
+	print(\"Update portrait recibió: \",portrait_name)
+	var partes = portrait_name.to_lower().split(\"_\")
+	var emocion = partes[0] if partes.size() > 0 else \"neutral\"
+	var estado = partes[1] if partes.size() > 1 else \"saturada\" # Saturada por defecto
+	aplicar_emocion(emocion)
+	aplicar_estado_lore(estado)
+
+
+# 4. FUNCIÓN PARA LAS EXPRESIONES
+func aplicar_emocion(emocion: String):
+	print(emocion)
+	match emocion:
+		\"feliz\":
+			$Torso/head/eyes.texture = tex_eyes_happy
+			$Torso/head/mouth.texture = tex_mouth_happy
+			$Torso/head/shade.hide()
+		\"hablando\":
+			$Torso/head/eyes.texture = tex_eyes_happy
+			$Torso/head/mouth.texture = tex_mouth_open_happy
+			$Torso/head/shade.hide()
+		\"triste\":
+			$Torso/head/eyes.texture = tex_eyes_sad
+			$Torso/head/mouth.texture = tex_mouth_sad
+			$Torso/head/shade.show() 
+		\"cansada\":
+			$Torso/head/eyes.texture = tex_eyes_closed
+			$Torso/head/mouth.texture = tex_mouth_sad
+			$Torso/head/shade.show() 
+		\"neutral\", _:
+			$Torso/head/eyes.texture = tex_eyes_closed 
+			$Torso/head/mouth.texture = tex_mouth_open_neutral
+			$Torso/head/shade.hide()
+
+# 5. FUNCIÓN PARA LA SATURACIÓN
+func aplicar_estado_lore(estado: String):
+	if estado == \"desaturada\":
+		$Torso/head/hair_bottom.texture = tex_hair_back_desat
+		$Torso/head/hair_top.texture = tex_top_desat
+		$Torso/arm_right/staff.texture= tex_staff_empty
+	else:
+		# Estado normal/saturado
+		$Torso/head/hair_bottom.texture = tex_hair_back_sat
+		$Torso/head/hair_top.texture = tex_top_sat
+		$Torso/arm_right/staff.texture= tex_staff_full
+		
+"
+
+[sub_resource type="Animation" id="Animation_c4bv4"]
+resource_name = "base"
+
+[sub_resource type="Animation" id="Animation_lwenw"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torso/head/eyes:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.866667, 1, 1.13333, 1.43333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("7_ipelg"), ExtResource("17_f7ly4"), ExtResource("18_8nq0o"), ExtResource("17_f7ly4"), ExtResource("7_ipelg")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Torso/head/eyes:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(4, -182), Vector2(4, -156), Vector2(4, -182)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Torso:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-12, -26)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Torso:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.26667, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.03), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Torso/arm_right:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.62, 1.4, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.014402, 0.199895, -0.0556073, 0.014402]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Torso/arm_left:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.63, 1.41, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.0379819, -0.161942, 0.0148722, -0.0379819]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sejrj"]
+_data = {
+&"base": SubResource("Animation_c4bv4"),
+&"idle": SubResource("Animation_lwenw")
+}
+
+[node name="LUNA" type="CharacterBody2D"]
+z_index = 2
+script = SubResource("GDScript_ldgj3")
+
+[node name="Torso" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(-12, -26)
+texture = ExtResource("2_tqmi2")
+
+[node name="arm_left" type="Sprite2D" parent="Torso"]
+show_behind_parent = true
+z_index = -1
+position = Vector2(155, -193)
+rotation = -0.0379819
+texture = ExtResource("3_gvhny")
+offset = Vector2(20, 457)
+
+[node name="head" type="Sprite2D" parent="Torso"]
+position = Vector2(-8, -264)
+texture = ExtResource("4_yu6yq")
+offset = Vector2(-20, -214)
+
+[node name="hair_bottom" type="Sprite2D" parent="Torso/head"]
+show_behind_parent = true
+z_index = -2
+position = Vector2(-28, 126)
+texture = ExtResource("5_pbp3w")
+offset = Vector2(-7, 480)
+
+[node name="eyebrows" type="Sprite2D" parent="Torso/head"]
+position = Vector2(7.5, -270)
+texture = ExtResource("6_pjgbl")
+
+[node name="eyes" type="Sprite2D" parent="Torso/head"]
+position = Vector2(4, -182)
+texture = ExtResource("7_ipelg")
+
+[node name="shade" type="Sprite2D" parent="Torso/head"]
+visible = false
+position = Vector2(7, -245)
+texture = ExtResource("8_e0cdc")
+
+[node name="mouth" type="Sprite2D" parent="Torso/head"]
+position = Vector2(9.5, -59)
+texture = ExtResource("9_3uc72")
+
+[node name="hair_top" type="Sprite2D" parent="Torso/head"]
+position = Vector2(-12.5, -401)
+texture = ExtResource("10_fimoe")
+
+[node name="skirt_front" type="Sprite2D" parent="Torso"]
+show_behind_parent = true
+position = Vector2(-16, 536)
+texture = ExtResource("11_dlmos")
+
+[node name="skirt_back" type="Sprite2D" parent="Torso/skirt_front"]
+show_behind_parent = true
+z_index = -1
+position = Vector2(-1, 226)
+texture = ExtResource("12_4jxb3")
+
+[node name="leg_right" type="Sprite2D" parent="Torso/skirt_front"]
+z_index = -1
+position = Vector2(-31, -197)
+texture = ExtResource("13_mbcrw")
+offset = Vector2(-4, 704)
+
+[node name="leg_left" type="Sprite2D" parent="Torso/skirt_front"]
+z_index = -1
+position = Vector2(123, -184)
+texture = ExtResource("14_7bg5u")
+offset = Vector2(23, 629)
+
+[node name="arm_right" type="Sprite2D" parent="Torso"]
+position = Vector2(-173, -174)
+rotation = 0.014402
+texture = ExtResource("15_1hp7b")
+offset = Vector2(-6, 444)
+
+[node name="staff" type="Sprite2D" parent="Torso/arm_right"]
+show_behind_parent = true
+position = Vector2(4.68945, 839.653)
+rotation = 1.31598
+texture = ExtResource("16_bhre0")
+offset = Vector2(22.8081, -247.1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sejrj")
+}
+autoplay = "idle"

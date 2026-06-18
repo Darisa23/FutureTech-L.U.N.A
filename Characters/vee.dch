@@ -1,0 +1,49 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+&"_translation_id": "",
+&"color": Color(1, 0.933333, 0.541176, 1),
+&"custom_info": {
+"prefix": "",
+"sound_mood_default": "",
+"sound_moods": {},
+"style": "",
+"suffix": ""
+},
+&"default_portrait": "happy",
+&"description": "",
+&"display_name": "Vee",
+&"mirror": false,
+&"nicknames": [""],
+&"offset": Vector2(0, -250),
+&"portraits": {
+"happy": {
+"export_overrides": {
+"image": "\"res://assets/Vee/Vee_happy.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"sad": {
+"export_overrides": {
+"image": "\"res://assets/Vee/Vee_sad.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"shock": {
+"export_overrides": {
+"image": "\"res://assets/Vee/Vee_shock.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
+&"scale": 0.3
+}
