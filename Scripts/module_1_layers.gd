@@ -110,12 +110,35 @@ func _create_fragments():
 		btn.position = scatter_positions[i] - FRAGMENT_SIZE / 2
 		btn.mouse_filter = Control.MOUSE_FILTER_STOP
 
-		var color = COLOR_INPUT if data["type"] == "input" else COLOR_OUTPUT
+		var is_input = data["type"] == "input"
+
+		# Estilo normal
 		var style = StyleBoxFlat.new()
-		style.bg_color = color
-		style.set_corner_radius_all(12)
+		style.bg_color = Color("#0e1a2e") if is_input else Color("#1a0808")
+		style.border_color = Color("#4a9eff") if is_input else Color("#e74c3c")
+		style.set_border_width_all(1)
+		style.set_corner_radius_all(6)
+		style.content_margin_left = 10
+		style.content_margin_right = 10
+
+		# Estilo hover
+		var style_hover = StyleBoxFlat.new()
+		style_hover.bg_color = Color("#162840") if is_input else Color("#2a1010")
+		style_hover.border_color = Color("#7dc8ff") if is_input else Color("#ff8080")
+		style_hover.set_border_width_all(1)
+		style_hover.set_corner_radius_all(6)
+		style_hover.content_margin_left = 10
+		style_hover.content_margin_right = 10
+
+		# Estilo focus vacío
+		var style_focus = StyleBoxEmpty.new()
+
 		btn.add_theme_stylebox_override("normal", style)
-		btn.add_theme_stylebox_override("hover", style)
+		btn.add_theme_stylebox_override("hover", style_hover)
+		btn.add_theme_stylebox_override("pressed", style)
+		btn.add_theme_stylebox_override("focus", style_focus)
+		btn.add_theme_color_override("font_color", Color("#7dc8ff") if is_input else Color("#ff8080"))
+		btn.add_theme_color_override("font_hover_color", Color("#c4e8ff") if is_input else Color("#ffb0b0"))
 
 		var idx = i
 		btn.pressed.connect(func(): _on_fragment_pressed(idx))

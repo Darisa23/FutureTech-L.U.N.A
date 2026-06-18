@@ -1,10 +1,11 @@
-[gd_scene load_steps=44 format=3 uid="uid://dou8a7vbvlcsl"]
+[gd_scene load_steps=58 format=3 uid="uid://dou8a7vbvlcsl"]
 
 [ext_resource type="Script" uid="uid://k5038t3ej1nn" path="res://Scripts/module_1_layers.gd" id="1_oes64"]
 [ext_resource type="Texture2D" uid="uid://c6ncxljl25uqt" path="res://assets/Princess/Princess-Idle_00.png" id="1_slc42"]
 [ext_resource type="Texture2D" uid="uid://b1dg5qgboitd3" path="res://assets/Princess/Princess-Idle_01.png" id="2_oes64"]
 [ext_resource type="Script" uid="uid://c4vehlw3nhb1u" path="res://Scripts/lines_layer.gd" id="2_vscxs"]
 [ext_resource type="Texture2D" uid="uid://dkb2wjkvlrfad" path="res://assets/Princess/Princess-Idle_02.png" id="3_vscxs"]
+[ext_resource type="FontFile" uid="uid://dqjkw431xrldg" path="res://assets/fonts/Consolas.ttf" id="4_ach3b"]
 [ext_resource type="Texture2D" uid="uid://bppbd1p78odeq" path="res://assets/Princess/Princess-Idle_03.png" id="4_rei56"]
 [ext_resource type="Texture2D" uid="uid://cnpt285jr54xe" path="res://assets/Princess/Princess-Idle_04.png" id="5_ach3b"]
 [ext_resource type="Texture2D" uid="uid://erdwg51mju7g" path="res://assets/Princess/Princess-Idle_05.png" id="6_2l1o6"]
@@ -42,6 +43,144 @@
 [ext_resource type="Texture2D" uid="uid://bva0gnig8tk06" path="res://assets/Princess/Princess-Idle_37.png" id="38_pago1"]
 [ext_resource type="Texture2D" uid="uid://lygovy43v60a" path="res://assets/Princess/Princess-Idle_38.png" id="39_3rnvq"]
 [ext_resource type="Texture2D" uid="uid://dkvg0j8yos8mk" path="res://assets/Princess/Princess-Idle_39.png" id="40_8we1d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rg0hn"]
+bg_color = Color(0.0235294, 0.054902, 0.101961, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.101961, 0.227451, 0.372549, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhtvx"]
+bg_color = Color(0.0352941, 0.0235294, 0.0784314, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.207843, 0.121569, 0.270588, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2l1o6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6y2d"]
+bg_color = Color(0.0666667, 0.0156863, 0.0235294, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.321569, 0.101961, 0.0862745, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rei56"]
+content_margin_left = 30.0
+content_margin_top = 15.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.117647, 0.121569, 0.243137, 1)
+border_width_left = 7
+border_color = Color(0.486275, 0.227451, 0.929412, 1)
+corner_radius_top_left = 13
+corner_radius_top_right = 13
+corner_radius_bottom_right = 13
+corner_radius_bottom_left = 13
+corner_detail = 20
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rei56"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ach3b"]
+bg_color = Color(0.709804, 0.6, 0.909804, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.592157, 0.466667, 0.862745, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2l1o6"]
+bg_color = Color(0.419608, 0.309804, 0.678431, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.831373, 0.745098, 1, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56xky"]
+bg_color = Color(0.592157, 0.466667, 0.862745, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.768627, 0.658824, 0.960784, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ach3b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kuy2v"]
+bg_color = Color(0.227451, 0.352941, 0.556863, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.313726, 0.45098, 0.686275, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1qso"]
+bg_color = Color(0.415686, 0.560784, 0.768627, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.607843, 0.741176, 0.909804, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bckjm"]
+bg_color = Color(0.313726, 0.45098, 0.686275, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.478431, 0.623529, 0.831373, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k8nki"]
 animations = [{
@@ -177,57 +316,57 @@ script = ExtResource("1_oes64")
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 1153.0
 offset_bottom = 639.0
-color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+color = Color(0.0627451, 0.0588235, 0.121569, 1)
 metadata/_edit_lock_ = true
 
-[node name="ZoneInput" type="ColorRect" parent="."]
-offset_left = 79.0
-offset_top = 151.0
-offset_right = 233.0
-offset_bottom = 571.0
-color = Color(0.29, 0.621333, 1, 0.196078)
-
-[node name="ZoneHidden" type="ColorRect" parent="."]
-offset_left = 290.0
-offset_top = 151.0
-offset_right = 619.0
-offset_bottom = 571.0
-color = Color(0.607405, 0.3479, 0.71, 0.196078)
-
-[node name="ZoneOutput" type="ColorRect" parent="."]
-offset_left = 678.0
+[node name="ZoneInput" type="Panel" parent="."]
+offset_left = 109.0
 offset_top = 152.0
-offset_right = 832.0
-offset_bottom = 572.0
-color = Color(0.91, 0.30394, 0.2366, 0.196078)
+offset_right = 263.0
+offset_bottom = 560.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rg0hn")
+
+[node name="ZoneHidden" type="Panel" parent="."]
+offset_left = 290.0
+offset_top = 152.0
+offset_right = 624.0
+offset_bottom = 560.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mhtvx")
+
+[node name="ZoneOutput" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_2l1o6")
+offset_left = 649.0
+offset_top = 152.0
+offset_right = 803.0
+offset_bottom = 560.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_w6y2d")
 
 [node name="ZoneIputLabel" type="Label" parent="."]
-offset_left = 79.0
-offset_top = 115.0
-offset_right = 223.0
-offset_bottom = 138.0
+offset_left = 110.0
+offset_top = 160.0
+offset_right = 262.0
+offset_bottom = 183.0
 theme_override_colors/font_color = Color(0.290196, 0.619608, 1, 1)
 text = "ENTRADA"
 horizontal_alignment = 1
 
 [node name="ZoneHiddenLabel" type="Label" parent="."]
-offset_left = 313.0
-offset_top = 115.0
-offset_right = 604.0
-offset_bottom = 138.0
+offset_left = 290.0
+offset_top = 160.0
+offset_right = 624.0
+offset_bottom = 183.0
 theme_override_colors/font_color = Color(0.607843, 0.34902, 0.713726, 1)
 text = "PROCESAMIENTO"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ZoneOutputLabel" type="Label" parent="."]
-offset_left = 688.0
-offset_top = 117.0
-offset_right = 819.0
-offset_bottom = 166.0
+offset_left = 651.0
+offset_top = 160.0
+offset_right = 803.0
+offset_bottom = 183.0
 theme_override_colors/font_color = Color(0.905882, 0.298039, 0.235294, 1)
-text = "SALIDA
-"
+text = "SALIDA"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -238,11 +377,15 @@ script = ExtResource("2_vscxs")
 
 [node name="DescriptionLabel" type="Label" parent="."]
 offset_left = 40.0
-offset_top = 9.0
+offset_top = 27.0
 offset_right = 1090.0
-offset_bottom = 69.0
-theme_override_colors/font_color = Color(0.973535, 0.973535, 0.973535, 1)
-theme_override_font_sizes/font_size = 18
+offset_bottom = 87.0
+theme_override_colors/font_color = Color(0.494118, 0.396078, 0.737255, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.0431373)
+theme_override_colors/font_outline_color = Color(0.727263, 0.350024, 0.999996, 0.901961)
+theme_override_fonts/font = ExtResource("4_ach3b")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_rei56")
 autowrap_mode = 3
 
 [node name="FeedbackLabel" type="Label" parent="."]
@@ -258,11 +401,20 @@ offset_right = 1128.0
 offset_bottom = 565.0
 
 [node name="AddNeuronButton" type="Button" parent="."]
-offset_left = 915.0
-offset_top = 131.0
-offset_right = 1067.0
-offset_bottom = 191.0
-text = "+ Agregar neurona
+offset_left = 895.0
+offset_top = 156.0
+offset_right = 1080.0
+offset_bottom = 198.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("4_ach3b")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rei56")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ach3b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2l1o6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_56xky")
+text = "+ AGREGAR NEURONA
 "
 
 [node name="NextButton" type="Button" parent="."]
@@ -277,7 +429,15 @@ offset_left = 904.0
 offset_top = 476.0
 offset_right = 1078.0
 offset_bottom = 516.0
-text = "▶ Activar a LUNA"
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("4_ach3b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ach3b")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kuy2v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_e1qso")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bckjm")
+text = "▶ ACTIVAR A LUNA"
 
 [node name="LunaSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(1002.88, 345.875)
