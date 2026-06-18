@@ -1,0 +1,246 @@
+[gd_scene load_steps=32 format=3 uid="uid://ck2h2ehcp6dka"]
+
+[ext_resource type="Script" uid="uid://cfwf5d8exox4f" path="res://addons/dialogic/Modules/LayeredPortrait/custom_layered_portrait.gd" id="1_7g1e5"]
+[ext_resource type="Texture2D" uid="uid://cwhodivf2nkoq" path="res://assets/LUNA/hair_back_saturated.png" id="2_tt71t"]
+[ext_resource type="Texture2D" uid="uid://duig5vx4bwhrx" path="res://assets/LUNA/hair_back_desaturated.png" id="3_3dyro"]
+[ext_resource type="Texture2D" uid="uid://b2iesy68jcn7h" path="res://assets/LUNA/torso.png" id="4_libbv"]
+[ext_resource type="Texture2D" uid="uid://dnbip2onjy08k" path="res://assets/LUNA/arm_right.png" id="5_m0ape"]
+[ext_resource type="Texture2D" uid="uid://belni386ovp1b" path="res://assets/LUNA/skirt_front.png" id="6_5friw"]
+[ext_resource type="Texture2D" uid="uid://c41u57toxct7" path="res://assets/LUNA/skirt_back_empty.png" id="7_nnl5w"]
+[ext_resource type="Texture2D" uid="uid://cdfdmo4aek2c6" path="res://assets/LUNA/skirt_back_stars.png" id="8_yasua"]
+[ext_resource type="Texture2D" uid="uid://c72k57dsx1vs5" path="res://assets/LUNA/leg_right.png" id="9_xonao"]
+[ext_resource type="Texture2D" uid="uid://d7shhby8ymrn" path="res://assets/LUNA/leg_left.png" id="10_lbeew"]
+[ext_resource type="Texture2D" uid="uid://ba1y0ut4f8dna" path="res://assets/LUNA/head_base.png" id="11_qti5y"]
+[ext_resource type="Texture2D" uid="uid://ckrui25pnu3aa" path="res://assets/LUNA/mouth_sad.png" id="12_re26o"]
+[ext_resource type="Texture2D" uid="uid://dblkhnmwvk7au" path="res://assets/LUNA/mouth_open_neutral.png" id="13_564wo"]
+[ext_resource type="Texture2D" uid="uid://c2gv2ds7dgsbj" path="res://assets/LUNA/mouth_happy.png" id="14_yqvf6"]
+[ext_resource type="Texture2D" uid="uid://y310hxtkcyls" path="res://assets/LUNA/mouth_open_happy.png" id="15_18dmq"]
+[ext_resource type="Texture2D" uid="uid://cpaydgdf64yhe" path="res://assets/LUNA/eyebrows.png" id="16_jriv4"]
+[ext_resource type="Texture2D" uid="uid://ps1pfioh4n38" path="res://assets/LUNA/eyes_happy.png" id="17_x8c6g"]
+[ext_resource type="Texture2D" uid="uid://b21mdgyijdslc" path="res://assets/LUNA/eyes_sad.png" id="18_w3o6f"]
+[ext_resource type="Texture2D" uid="uid://bfabh7cca2c2x" path="res://assets/LUNA/eyes_closed.png" id="19_0pa7e"]
+[ext_resource type="Texture2D" uid="uid://c2u6lb20ffwbl" path="res://assets/LUNA/shade_face.png" id="20_ysvqw"]
+[ext_resource type="Texture2D" uid="uid://b14f2jxp3mf10" path="res://assets/LUNA/top_saturated.png" id="21_vim0k"]
+[ext_resource type="Texture2D" uid="uid://dige6hemnr3n2" path="res://assets/LUNA/top_desaturated.png" id="22_nf7f8"]
+[ext_resource type="Texture2D" uid="uid://dp1h5jn4hm6ur" path="res://assets/LUNA/arm_left.png" id="23_wvty1"]
+[ext_resource type="Texture2D" uid="uid://d1cbkj3fo3736" path="res://assets/LUNA/staff_full.png" id="24_dqdvo"]
+[ext_resource type="Texture2D" uid="uid://cfeux2vtv6fww" path="res://assets/LUNA/staff_empty.png" id="25_jsip3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvflb"]
+atlas = ExtResource("14_yqvf6")
+region = Rect2(0, 0, 79, 35)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7f0oy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvflb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_18dmq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_564wo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_re26o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3t20i"]
+atlas = ExtResource("17_x8c6g")
+region = Rect2(0, 0, 377, 122)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50ukf"]
+atlas = ExtResource("18_w3o6f")
+region = Rect2(0, 0, 359, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xqjc"]
+atlas = ExtResource("19_0pa7e")
+region = Rect2(0, 0, 359, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ux7jq"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_3t20i")
+}, {
+"duration": 0.41,
+"texture": SubResource("AtlasTexture_50ukf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xqjc")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_50ukf")
+}],
+"loop": true,
+"name": &"blinking",
+"speed": 5.0
+}]
+
+[node name="LayeredPortrait" type="CanvasGroup"]
+script = ExtResource("1_7g1e5")
+fix_offset = false
+
+[node name="hair_bottom" type="Node2D" parent="."]
+position = Vector2(-23, 379)
+
+[node name="saturated" type="Sprite2D" parent="hair_bottom"]
+visible = false
+texture = ExtResource("2_tt71t")
+
+[node name="desaturated" type="Sprite2D" parent="hair_bottom"]
+visible = false
+texture = ExtResource("3_3dyro")
+
+[node name="torso" type="Sprite2D" parent="."]
+texture = ExtResource("4_libbv")
+
+[node name="arm_left" type="Sprite2D" parent="torso"]
+show_behind_parent = true
+position = Vector2(155, -193)
+rotation = -0.0379819
+texture = ExtResource("5_m0ape")
+offset = Vector2(20, 457)
+
+[node name="skirt_front" type="Sprite2D" parent="torso"]
+show_behind_parent = true
+position = Vector2(-19, 528)
+texture = ExtResource("6_5friw")
+
+[node name="skirt_back" type="Node2D" parent="torso/skirt_front"]
+show_behind_parent = true
+position = Vector2(0, 251)
+
+[node name="empty" type="Sprite2D" parent="torso/skirt_front/skirt_back"]
+visible = false
+texture = ExtResource("7_nnl5w")
+
+[node name="full" type="Sprite2D" parent="torso/skirt_front/skirt_back"]
+visible = false
+texture = ExtResource("8_yasua")
+
+[node name="arm_left" type="Sprite2D" parent="torso/skirt_front/skirt_back/full"]
+show_behind_parent = true
+z_index = -1
+position = Vector2(155, -193)
+rotation = -0.0379819
+texture = ExtResource("5_m0ape")
+offset = Vector2(20, 457)
+
+[node name="right_leg" type="Sprite2D" parent="torso/skirt_front"]
+show_behind_parent = true
+position = Vector2(178, 549)
+texture = ExtResource("9_xonao")
+
+[node name="left_leg" type="Sprite2D" parent="torso/skirt_front"]
+show_behind_parent = true
+position = Vector2(-67, 555)
+texture = ExtResource("10_lbeew")
+
+[node name="head" type="Sprite2D" parent="torso"]
+position = Vector2(-29, -476)
+texture = ExtResource("11_qti5y")
+
+[node name="mouth" type="Node2D" parent="torso/head"]
+position = Vector2(28, 145)
+
+[node name="sad" type="Sprite2D" parent="torso/head/mouth"]
+visible = false
+texture = ExtResource("12_re26o")
+
+[node name="open_neutral" type="Sprite2D" parent="torso/head/mouth"]
+visible = false
+texture = ExtResource("13_564wo")
+
+[node name="happy" type="Sprite2D" parent="torso/head/mouth"]
+visible = false
+texture = ExtResource("14_yqvf6")
+
+[node name="open_happy" type="Sprite2D" parent="torso/head/mouth"]
+visible = false
+texture = ExtResource("15_18dmq")
+
+[node name="talking" type="AnimatedSprite2D" parent="torso/head/mouth"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_7f0oy")
+autoplay = "default"
+frame_progress = 0.706782
+
+[node name="eyebrows" type="Node2D" parent="torso/head"]
+position = Vector2(29, -90)
+
+[node name="high" type="Sprite2D" parent="torso/head/eyebrows"]
+visible = false
+texture = ExtResource("16_jriv4")
+
+[node name="medium" type="Sprite2D" parent="torso/head/eyebrows"]
+visible = false
+position = Vector2(-1, 28)
+texture = ExtResource("16_jriv4")
+
+[node name="low" type="Sprite2D" parent="torso/head/eyebrows"]
+visible = false
+position = Vector2(0, 65)
+texture = ExtResource("16_jriv4")
+
+[node name="eyes" type="Node2D" parent="torso/head"]
+position = Vector2(28, 29)
+
+[node name="open" type="AnimatedSprite2D" parent="torso/head/eyes"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_ux7jq")
+animation = &"blinking"
+autoplay = "blinking"
+frame = 3
+frame_progress = 1.0
+
+[node name="closed" type="Sprite2D" parent="torso/head/eyes"]
+visible = false
+position = Vector2(0, 25)
+texture = ExtResource("19_0pa7e")
+
+[node name="tired" type="Sprite2D" parent="torso/head/eyes"]
+visible = false
+texture = ExtResource("18_w3o6f")
+
+[node name="shade" type="Sprite2D" parent="torso/head"]
+visible = false
+position = Vector2(22, -51)
+texture = ExtResource("20_ysvqw")
+
+[node name="hair_top" type="Node2D" parent="torso/head"]
+position = Vector2(3, -203)
+
+[node name="saturated" type="Sprite2D" parent="torso/head/hair_top"]
+visible = false
+texture = ExtResource("21_vim0k")
+
+[node name="desaturated" type="Sprite2D" parent="torso/head/hair_top"]
+visible = false
+texture = ExtResource("22_nf7f8")
+
+[node name="arm_right" type="Sprite2D" parent="torso"]
+position = Vector2(-173, -174)
+rotation = 0.014402
+texture = ExtResource("23_wvty1")
+offset = Vector2(-6, 444)
+
+[node name="staff" type="Node2D" parent="torso/arm_right"]
+show_behind_parent = true
+position = Vector2(292.951, 688.853)
+rotation = 0.987276
+
+[node name="full" type="Sprite2D" parent="torso/arm_right/staff"]
+visible = false
+show_behind_parent = true
+texture = ExtResource("24_dqdvo")
+
+[node name="empty" type="Sprite2D" parent="torso/arm_right/staff"]
+visible = false
+show_behind_parent = true
+texture = ExtResource("25_jsip3")

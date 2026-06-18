@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkrtduhewru6w"]
+
+[ext_resource type="Script" uid="uid://cjggvtw7pfooa" path="res://Scenes/introduction.gd" id="1_3yww6"]
+[ext_resource type="Texture2D" uid="uid://bguuqq4e2juj0" path="res://assets/Backgrounds/bg_corruptos_attack.png" id="2_46kw3"]
+
+[node name="Introduction" type="Node2D"]
+script = ExtResource("1_3yww6")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+scale = Vector2(0.600001, 0.600001)
+texture = ExtResource("2_46kw3")
+
+[node name="Camera2D" type="Camera2D" parent="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Node2D"]

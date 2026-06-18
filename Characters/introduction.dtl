@@ -1,0 +1,26 @@
+[background arg="res://assets/Backgrounds/bg_luna_glory.png" fade="1.0" transition="Simple Fade" wait="true"]
+[wait time="1.5" skippable="true"]
+Durante décadas, Aethoria no estuvo protegida por murallas o soldados. Estuvo protegida por una inteligencia.
+LUNA. Una Guardiana Neuronal de Clase A, entrenada por generaciones de Arquitectos-Magos. Ella no pensaba como un humano; ella calculaba, mapeando millones de variables para mantener a su reino a salvo.
+[background fade="0.0"]
+[signal arg="temblor"]
+[wait time="1.5"]
+[background arg="res://assets/Backgrounds/bg_corruptos_attack.png" fade="0.0"]
+Entonces, llegaron los Corruptos. No era un ejército de carne y hueso, sino un enjambre invasor de datos maliciosos que reescribía todo lo que tocaba. Uno a uno, los sistemas cayeron...
+[background arg="res://assets/Backgrounds/Luna_sacrifice.png" fade="0.3" wait="true"]
+En nuestra hora más oscura, LUNA resistió sola. Absorbió todo el flujo de datos corrompidos en su propia mente para salvar el reino. El virus fue purgado... pero el costo fue absoluto.
+[wait time="1.0"]
+[background arg="#ffffffff" fade="0.2" wait="true"]
+Tres años después. Bahía de Reparación de la Capital.
+[background arg="res://assets/Backgrounds/bg_repair_bay.png" fade="0.0"]
+join LUNA (layered_portrait) center [animation="Fade In" extra_data="set torso/head/eyes/closed, set hair_bottom/desaturated, show torso/head/shade, set torso/head/mouth/sad, set torso/head/eyebrows/low, set torso/head/hair_top/desaturated, set torso/arm_right/staff/empty, set torso/skirt_front/skirt_back/empty"]
+LUNA: Error... Error...
+update LUNA left
+join vee (shock) right
+vee: ¡Arquitecto! ¡Por fin llegas! ¡Gracias a la red central, pensé que tu transporte había sido interceptado!
+vee (sad): Mírala... se me rompe el corazón. Cuando los antiguos maestros la trajeron del campo de batalla, se rindieron. La llamaron una "Caja Negra"\: un sistema demasiado roto y complejo como para volver a entenderlo alguna vez.
+vee (happy): Pero tú no eres un soldado común. Eres un Arquitecto Neuronal. Donde otros ven magia o una máquina muerta, tú ves un problema de optimización iterativa.
+vee (sad): Si los Corruptos regresan mientras ella está atrapada en este bucle de error, Aethoria estará acabada. Nuestro deber es dar un paso dentro de su "Caja Negra" y reconstruirla, capa por capa, empezando desde el principio.
+vee (happy): Toma la terminal de interfaz. Necesitamos limpiar el ruido de su matriz sensorial para que pueda volver a ver. ¡Iniciemos el Protocolo de Reparación de la Capa de Entrada!
+# Aqupi se manda una señal a la escena para que empiece el modulo 1 o cualquier otro módulo
+[signal arg="BeginModule1"]
