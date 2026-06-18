@@ -1,0 +1,38 @@
+join vee (happy) center
+vee: Antes de pasar al siguiente módulo tienes que pasar este quiz obligatorio.
+leave vee
+1.¿Qué es un peso?
+set {correctans} = 0
+- A. Una neurona especial que toma decisiones.
+- B.  Un valor que indica qué tan importante es una información para la red neuronal.
+	set {correctans} += 0.2
+- C. Un programa que almacena información sin analizarla.
+- D. Un tipo de enemigo que detecta LUNA.
+2. ¿Qué indica un peso alto?
+- A. Que la información no tiene mucha influencia en la decisión.
+- B. Que la neurona deja de funcionar por sobrecarga de límite.
+- C. Que la información tiene mucha influencia en la decisión.
+	set {correctans} += 0.2
+- D. Que la red neuronal está dañada.
+3. ¿Qué indica un peso bajo?
+- A. Que la neurona es más rápida en cuanto al procesamiento de datos.
+- B. Que la decisión ya fue tomada.
+- C. Que la información es obligatoria.
+- D. Que la información tiene poca influencia en la decisión.
+	set {correctans} += 0.2
+4. ¿Por qué son importantes los pesos?
+- A. Porque permiten que la red neuronal sepa qué información es más relevante.
+	set {correctans} += 0.2
+- B. Porque reemplazan a las neuronas.
+- C. Porque almacenan imágenes.
+- D. Porque crean nuevas capas automáticamente que mejoran la relevancia de la respuesta.
+5. Si "llevar espada" tiene un peso mayor que "llevar flores", ¿qué significa?
+- A. Que ambas características son igual de importantes.
+- B. Que la espada influye más en la decisión de LUNA.
+	set {correctans} += 0.2
+- C. Que las flores son peligrosas.
+- D. Que la red neuronal dejará de analizar la información.
+if {correctans} == 1.0:
+	[signal arg="win"]
+else:
+	[signal arg="fail"]

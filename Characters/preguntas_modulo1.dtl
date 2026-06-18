@@ -1,0 +1,38 @@
+join vee (happy) center
+vee: Antes de pasar al siguiente módulo tienes que pasar este quiz obligatorio.
+leave vee
+1. ¿Qué es una neurona?
+set {correctans} = 0
+- A. Una capa completa de la red neuronal.
+- B. Una pequeña unidad que recibe información, la procesa y envía un resultado.
+	set {correctans} += 0.2
+- C. Un programa que almacena información sin analizarla.
+- D. Un tipo de enemigo que detecta LUNA.
+2. ¿Qué es una capa?
+- A. Un resultado generado por la red neuronal.
+- B. Una única neurona con muchas conexiones.
+- C. Un archivo donde se guardan los datos de LUNA.
+- D. Un conjunto de neuronas que trabajan juntas para una función específica.
+	set {correctans} += 0.2
+3. ¿Qué hace la capa de entrada?
+- A. Recibe la información que utilizará la red neuronal.
+	set {correctans} += 0.2
+- B. Toma la decisión final de la red.
+- C. Analiza patrones y aprende de experiencias pasadas.
+- D. Elimina información que no es importante.
+4. ¿Qué hace la capa oculta?
+- A. Muestra el resultado final al usuario.
+- B. Recibe información del exterior sin procesarla.
+- C. Analiza la información y busca relaciones o patrones entre los datos.
+	set {correctans} += 0.2
+- D. Guarda información para siempre.
+5. ¿Qué hace la capa de salida?
+- A. Crea nuevas neuronas para la red.
+- B. Recibe datos de sensores y enemigos.
+- C.  Toma los resultados del análisis y genera una decisión o respuesta.
+	set {correctans} += 0.2
+- D. Conecta la red neuronal a internet.
+if {correctans} == 1.0:
+	[signal arg="win"]
+else:
+	[signal arg="fail"]

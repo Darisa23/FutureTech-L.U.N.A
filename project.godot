@@ -27,7 +27,11 @@ directories/dch_directory={
 "vee": "res://Characters/vee.dch"
 }
 directories/dtl_directory={
-"introduction": "res://Characters/introduction.dtl"
+"dialogo_modulo1": "res://Characters/dialogo_modulo1.dtl",
+"dialogo_modulo2": "res://Characters/dialogo_modulo2.dtl",
+"introduction": "res://Characters/introduction.dtl",
+"preguntas_modulo1": "res://Characters/preguntas_modulo1.dtl",
+"preguntas_modulo2": "res://Characters/preguntas_modulo2.dtl"
 }
 layout/style_directory={
 "": "res://Characters/styledialog.tres",
@@ -69,7 +73,9 @@ audio/channel_defaults={
 "volume": 0.0
 }
 }
-variables={}
+variables={
+"correctans": 0
+}
 
 [editor_plugins]
 

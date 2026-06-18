@@ -1,0 +1,48 @@
+join vee (happy) center
+vee: Para reparar a LUNA, debemos entender cómo piensa. Su mente está formada por miles de pequeñas unidades llamadas neuronas, que a su vez crean distintas capas.
+Una sola neurona no puede hacer mucho, pero cuando trabajan juntas pueden reconocer patrones, tomar decisiones y aprender.
+vee (sad): Pero ¿Que es una neurona?,
+vee (happy): Una neurona es una pequeña unidad que recibe información, la procesa y envía un resultado.
+vee: Sin embargo, cada neurona está limitada por lo que 1 sola neurona no puede cumplir con todas las funciones de LUNA, por lo tanto, para que la red neuronal funcione correctamente necesitamos muchas neuronas para distintas funciones.
+vee: Por ejemplo, una neurona podría detectar si alguien lleva armadura, otra podría detectar si lleva una espada y otra detectar movimientos extraños.
+vee: Al combinar muchas neuronas, LUNA puede tomar decisiones más inteligentes.
+vee: Las neuronas de LUNA se organizan en capas que trabajan juntas. En este módulo veremos tres capas principales\: la capa de entrada, la capa oculta y la capa de salida.
+vee: ¿Te quedó claro o deseas que lo repita?
+- ¿Puedes repetir otra vez?
+	jump dialogo_modulo1/
+- Lo tengo claro
+	vee: La capa de entrada se encarga de recibir toda la información que le va a ser entregada a la red neuronal, pero estas no procesan la información.
+	vee: Ejemplo\: \
+	El color de un enemigo acercándose, si tiene armas o a qué velocidad se está acercando entre muchas otras cosas.
+	vee: En la capa oculta ocurre el análisis de la información y la búsqueda de patrones. Aquí las neuronas comparan los datos recibidos para encontrar relaciones entre ellos.
+	vee: Ejemplo\: \
+	Si tiene espada + armadura + corre hacia el castillo \
+	↓ \
+	Probablemente sea un enemigo.
+	vee: La capa de salida se encarga de ver los resultados dados por la capa oculta y tomar una decisión.
+	vee: Ejemplo\: \
+	Amigo   20% Enemigo 80% \
+	Resultado\: ENEMIGO
+	label Pregunta
+	vee (sad): ¿Tienes alguna duda sobre lo que te acabo de explicar?
+	- ¿Qué es la capa de entrada?
+		vee (happy): La capa de entrada se encarga de recibir toda la información que le va a ser entregada a la red neuronal, pero estas no procesan la información.
+		vee: Ejemplo\: \\
+		El color de un enemigo acercándose, si tiene armas o a qué velocidad se está acercando entre muchas otras cosas.
+		jump Pregunta
+	- ¿Qué es la capa oculta?
+		vee (happy): En la capa oculta ocurre el análisis de la información y la búsqueda de patrones. Aquí las neuronas comparan los datos recibidos para encontrar relaciones entre ellos.
+		vee: Ejemplo\: \\
+		Si tiene espada + armadura + corre hacia el castillo \\
+		↓ \\
+		Probablemente sea un enemigo.
+		jump Pregunta
+	- ¿Qué es la capa de salida?
+		vee (happy): La capa de salida se encarga de ver los resultados dados por la capa oculta y tomar una decisión.
+		vee: Ejemplo\: \\
+		Amigo   20% Enemigo 80% \\
+		Resultado\: ENEMIGO
+		jump Pregunta
+	- No tengo preguntas.
+		vee (happy): ¡Excelente! Entonces empecemos la reparación.
+		[signal arg="finExplicacion"]

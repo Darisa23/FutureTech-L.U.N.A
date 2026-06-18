@@ -1,0 +1,19 @@
+join vee (happy) center
+vee: Bien hecho ya hemos reconstruido las neuronas y las capas de LUNA, pero no te has preguntado...
+vee (shock): ¿Como es que las neuronas diferencian que información es más importante que otra?,
+vee (happy): pues de esto están encargados los pesos y es gracias a ellos que LUNA decide en que datos confiar más a la hora de tomar una decisión final.
+vee: Imagina que LUNA observa a una persona acercándose al castillo. No todas las características tienen la misma importancia\:
+vee (shock): Llevar una espada puede ser muy importante.  \
+Llevar armadura puede ser importante.  \
+Tener una capa roja puede ser poco importante.
+vee (happy): Los pesos permiten que la red neuronal dé más relevancia a algunas características y menos a otras.
+vee: Entonces ¿cómo funcionan los pesos?,
+vee: pues cada conexión entre neuronas tiene un peso asociado, siendo valores altos información que es muy importante, valores bajos información con poca relevancia y pesos negativos información que reduce la probabilidad de una decisión
+vee: Es matemática pura, Arquitecto. Si ve a alguien con espada, ella suma +8. Pero si ve flores, eso le resta -4. Si la persona camina tranquilamente hacia el castillo (-6), el total baja a -2.
+vee: ¡LUNA decide que es alguien inofensivo! El problema es que sus pesos están desordenados, y ahora mismo está atacando hasta a los carteros por error.
+vee: A eso lo llamamos suma ponderada. Cada característica es un 'input', el peso es su importancia, y la suma nos da su decisión final. ¡Por eso es tan crítico calibrar bien esos valores!
+vee: ¿Te quedó claro o deseas que lo repita?
+- ¿Puedes repetir otra vez?
+	jump dialogo_modulo1/
+- Lo tengo claro
+	[signal arg="finExplicacion"]
