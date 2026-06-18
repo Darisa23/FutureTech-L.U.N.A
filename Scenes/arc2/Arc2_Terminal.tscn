@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxktmwrehshtn"]
+[gd_scene load_steps=15 format=3 uid="uid://dxktmwrehshtn"]
 
 [ext_resource type="Script" uid="uid://dm4e1jwam25e8" path="res://Scripts/arc_2_terminal.gd" id="1_t33kg"]
 [ext_resource type="Texture2D" uid="uid://d2lb4g48v48ju" path="res://assets/circle.png" id="2_up3yc"]
 [ext_resource type="Shader" uid="uid://dousyyg1e5m14" path="res://Scenes/arc2/colorsito.gdshader" id="3_dun0a"]
 [ext_resource type="Texture2D" uid="uid://bd3ja7hrhg082" path="res://assets/Captura de pantalla 2026-06-12 133825.png" id="3_ygd2p"]
 [ext_resource type="FontFile" uid="uid://b8fr3did4cfeq" path="res://assets/fonts/FiraCode-VariableFont_wght.ttf" id="4_dun0a"]
+[ext_resource type="PackedScene" uid="uid://dpaun1u2l2hvf" path="res://Characters/Luna/Luna.tscn" id="6_lxagk"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lxagk"]
 
@@ -33,6 +34,10 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_lxagk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lxagk"]
 
 [node name="Arc2Terminal" type="Node2D"]
 script = ExtResource("1_t33kg")
@@ -197,9 +202,9 @@ anchor_right = 0.686
 anchor_bottom = 0.845
 offset_left = -72.842
 offset_top = -18.505
-offset_right = 30.158
-offset_bottom = 30.495
-theme_override_colors/font_color = Color(0.45098, 0.45098, 0.45098, 1)
+offset_right = 32.158
+offset_bottom = 24.495
+theme_override_colors/font_color = Color(0.972837, 0.432208, 0.697921, 1)
 theme_override_font_sizes/font_size = 12
 text = "ACCURACY: 
 "
@@ -233,7 +238,7 @@ offset_left = 187.158
 offset_top = -18.505
 offset_right = 290.158
 offset_bottom = 30.495
-theme_override_colors/font_color = Color(0.45098, 0.45098, 0.45098, 1)
+theme_override_colors/font_color = Color(0.222484, 0.842197, 0.87315, 1)
 theme_override_font_sizes/font_size = 12
 text = "INVASION IN:
 "
@@ -245,6 +250,7 @@ offset_top = 84.0
 offset_right = 857.0
 offset_bottom = 647.0
 color = Color(0.0901961, 0.0901961, 0.141176, 1)
+metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="code"]
 layout_mode = 0
@@ -270,9 +276,9 @@ text = "LUNA STATUS
 [node name="InputField" type="LineEdit" parent="code"]
 layout_mode = 0
 offset_left = 41.0
-offset_top = 455.0
+offset_top = 406.0
 offset_right = 814.0
-offset_bottom = 495.0
+offset_bottom = 446.0
 theme_override_colors/caret_color = Color(0.625597, 0.625597, 0.625597, 1)
 theme_override_colors/font_placeholder_color = Color(0.55, 0.46255, 0.451, 0.368627)
 theme_override_font_sizes/font_size = 18
@@ -313,12 +319,65 @@ offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0.862745, 0.862745, 0.666667, 1)
 
+[node name="Label" type="Label" parent="."]
+offset_left = 51.0
+offset_top = 576.0
+offset_right = 381.0
+offset_bottom = 635.0
+theme_override_colors/font_color = Color(1, 0.952941, 0.713726, 1)
+theme_override_font_sizes/font_size = 20
+text = "Ayudate con estos botones:
+"
+
+[node name="SymbolHelpers" type="HBoxContainer" parent="."]
+offset_left = 365.0
+offset_top = 558.0
+offset_right = 629.0
+offset_bottom = 615.0
+theme_override_constants/separation = 30
+
+[node name="BtnUnderscore" type="Button" parent="SymbolHelpers"]
+layout_mode = 2
+theme = SubResource("Theme_lxagk")
+theme_override_colors/font_disabled_color = Color(0.938785, 0.717742, 0.947795, 1)
+theme_override_colors/icon_disabled_color = Color(0.83, 0.1577, 0.1577, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.941176, 0.384314, 0.772549, 1)
+theme_override_colors/icon_hover_color = Color(0.874569, 0.318322, 0.649202, 1)
+theme_override_colors/icon_pressed_color = Color(0.941176, 0.384314, 0.772549, 1)
+theme_override_colors/icon_focus_color = Color(0.941176, 0.384314, 0.772549, 1)
+theme_override_colors/icon_normal_color = Color(0.94, 0.3854, 0.77362, 1)
+theme_override_colors/font_color = Color(0.947482, 0.389934, 0.718688, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lxagk")
+text = "_ "
+
+[node name="BtnBracketLeft" type="Button" parent="SymbolHelpers"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = " ["
+
+[node name="BtnBracketRight" type="Button" parent="SymbolHelpers"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "]"
+
+[node name="BtnQuote" type="Button" parent="SymbolHelpers"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "'"
+
+[node name="BlocksProgress" type="HBoxContainer" parent="."]
+offset_left = 647.0
+offset_top = 106.0
+offset_right = 704.0
+offset_bottom = 119.0
+
 [node name="NarrativeLabel" type="Label" parent="."]
-offset_left = 904.0
-offset_top = 304.0
-offset_right = 1103.0
-offset_bottom = 578.0
-theme_override_colors/font_color = Color(1, 0.419608, 0.419608, 1)
+offset_left = 884.0
+offset_top = 394.0
+offset_right = 1128.0
+offset_bottom = 623.0
+theme_override_colors/font_color = Color(0.651073, 0.524915, 0.811752, 1)
 theme_override_font_sizes/font_size = 18
 autowrap_mode = 3
 
@@ -337,14 +396,13 @@ offset_right = 406.0
 offset_bottom = 37.0
 theme_override_colors/font_color = Color(0.533333, 0.533333, 0.533333, 1)
 
-[node name="LunaStatus" type="ColorRect" parent="."]
-offset_left = 902.0
-offset_top = 163.0
-offset_right = 1101.0
-offset_bottom = 223.0
-color = Color(0.290196, 0.619608, 1, 1)
-
 [node name="CapturaDePantalla2026-06-12133825" type="Sprite2D" parent="."]
 position = Vector2(581, -321)
 scale = Vector2(0.842336, 0.831387)
 texture = ExtResource("3_ygd2p")
+
+[node name="LUNA" parent="." instance=ExtResource("6_lxagk")]
+position = Vector2(993, 224)
+rotation = -6.28319
+scale = Vector2(0.08, 0.08)
+skew = -0.0436332

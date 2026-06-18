@@ -8,14 +8,27 @@ var cursor_visible = true
 var blink_timer = 0.0
 const SyntaxClassifier = preload("res://scripts/typing/SyntaxClassifier.gd")
 
+# --- Métricas de accuracy ---
+var total_chars_typed = 0
+var total_chars_correct = 0
+
+# --- Timer decorativo ---
+var invasion_seconds_left = 20 * 60  # 20:00 inicial, ajustable
+
 @onready var narrative_label = $NarrativeLabel
 @onready var code_display = $code/CodeContainer/CodeDisplay
 @onready var line_numbers = $code/CodeContainer/LineNumbers
 @onready var cursor_bar = $code/CodeContainer/CodeDisplay/CursorBar
 @onready var feedback_label = $FeedbackLabel
-@onready var progress_label = $ProgressLabel
-@onready var luna_status = $LunaStatus
+@onready var progress_label = $BarritaInfo/ColorRect2/block
+@onready var accuracy_label = $BarritaInfo/Acc
+@onready var invasion_label = $BarritaInfo/inv
+@onready var blocks_progress = $BlocksProgress
 @onready var input_field = $code/InputField
+@onready var btn_underscore = $SymbolHelpers/BtnUnderscore
+@onready var btn_bracket_left = $SymbolHelpers/BtnBracketLeft
+@onready var btn_bracket_right = $SymbolHelpers/BtnBracketRight
+@onready var btn_quote = $SymbolHelpers/BtnQuote
 
 func _ready():
 	blocks = Arc2CodeData.get_blocks()
@@ -24,7 +37,36 @@ func _ready():
 	feedback_label.text = ""
 	cursor_bar.color = Color("#dcdcaa")
 	input_field.text_changed.connect(_on_text_changed)
+	btn_underscore.pressed.connect(func(): _insert_symbol("_"))
+	btn_bracket_left.pressed.connect(func(): _insert_symbol("["))
+	btn_bracket_right.pressed.connect(func(): _insert_symbol("]"))
+	btn_quote.pressed.connect(func(): _insert_symbol("'"))
+
+	_build_blocks_progress()
 	_load_block(0)
+
+func _build_blocks_progress():
+	for child in blocks_progress.get_children():
+		child.queue_free()
+
+	for i in blocks.size():
+		var bar = ColorRect.new()
+		bar.custom_minimum_size = Vector2(40, 8)
+		bar.color = Color("#2a2a3a")  # pendiente por defecto
+		bar.name = "BlockBar_%d" % i
+		blocks_progress.add_child(bar)
+
+	_update_blocks_progress()
+
+func _update_blocks_progress():
+	for i in blocks.size():
+		var bar = blocks_progress.get_node("BlockBar_%d" % i)
+		if i < current_block:
+			bar.color = Color("#00ff88")   # bloque completado
+		elif i == current_block:
+			bar.color = Color("#4a9eff")   # bloque actual
+		else:
+			bar.color = Color("#2a2a3a")   # pendiente
 
 func _load_block(index: int):
 	current_block = index
@@ -33,14 +75,34 @@ func _load_block(index: int):
 	_load_line()
 	_update_progress()
 	_update_line_numbers()
+	_update_blocks_progress()
 
 func _load_line():
 	var line_data = blocks[current_block]["lines"][current_line_index]
 	typing_line = TypingLine.new(line_data["code"], line_data["indent"])
+
+	input_field.release_focus()
 	input_field.text = ""
-	input_field.grab_focus()
+	input_field.editable = true
 	_render()
 	_update_cursor()
+	await get_tree().process_frame
+	input_field.grab_focus()
+	input_field.caret_column = 0
+
+func _insert_symbol(symbol: String):
+	if not input_field.editable:
+		return
+	var caret = input_field.caret_column
+	var new_text = input_field.text.insert(caret, symbol)
+
+	input_field.text_changed.disconnect(_on_text_changed)
+	input_field.text = new_text
+	input_field.caret_column = caret + symbol.length()
+	input_field.text_changed.connect(_on_text_changed)
+
+	_on_text_changed(new_text)
+	input_field.grab_focus()
 
 func _update_line_numbers():
 	var lines = blocks[current_block]["lines"]
@@ -95,31 +157,76 @@ func _process(delta):
 		cursor_visible = !cursor_visible
 		cursor_bar.visible = cursor_visible
 
+	if invasion_seconds_left > 0:
+		invasion_seconds_left -= delta
+		if invasion_seconds_left < 0:
+			invasion_seconds_left = 0
+		_update_invasion_timer()
+
+	# Red de seguridad: si el campo debería tener foco y no lo tiene, se lo devolvemos
+	if input_field.editable and not input_field.has_focus():
+		print("RECOVERING FOCUS - frame: ", Engine.get_process_frames())
+		input_field.grab_focus()
+
+func _update_invasion_timer():
+	var total_seconds = int(invasion_seconds_left)
+	var minutes = total_seconds / 60
+	var seconds = total_seconds % 60
+	invasion_label.text = "INVASION IN: %d:%02d" % [minutes, seconds]
+
 func _on_text_changed(new_text: String):
+	if not input_field.editable:
+		return
+
+	# Detectar si se agregó un carácter nuevo (no borrado) para contar accuracy
+	var prev_len = typing_line.typed.length()
+	var new_len = new_text.length()
+
+	if new_len > prev_len:
+		var target = typing_line.current_target()
+		var added_index = prev_len
+		if added_index < new_text.length() and added_index < target.length():
+			total_chars_typed += 1
+			if new_text[added_index] == target[added_index]:
+				total_chars_correct += 1
+			_update_accuracy()
+
 	var line_done = typing_line.update_typed(new_text)
 
 	if input_field.text != typing_line.typed:
 		input_field.text = typing_line.typed
 		input_field.caret_column = typing_line.typed.length()
 
+	_render()
+	_update_cursor()
+
 	if line_done:
+		input_field.editable = false
+		await get_tree().create_timer(0.15).timeout
 		_on_line_complete()
-	else:
-		_render()
-		_update_cursor()
+
+func _update_accuracy():
+	if total_chars_typed == 0:
+		accuracy_label.text = "ACCURACY: 100%"
+		return
+	var pct = int(round(100.0 * float(total_chars_correct) / float(total_chars_typed)))
+	accuracy_label.text = "ACCURACY: %d%%" % pct
 
 func _on_line_complete():
-	luna_status.color = Color("#00ff88")
 	current_line_index += 1
 	var lines = blocks[current_block]["lines"]
+	print("LINE COMPLETE -> editable antes: ", input_field.editable, " has_focus antes: ", input_field.has_focus())
 
 	if current_line_index >= lines.size():
 		_on_block_complete()
 	else:
 		_load_line()
 		_update_progress()
+	print("LINE COMPLETE -> editable despues: ", input_field.editable, " has_focus despues: ", input_field.has_focus())
 
 func _on_block_complete():
+	_update_blocks_progress()
+
 	if current_block < blocks.size() - 1:
 		feedback_label.text = "Bloque restaurado. Cargando siguiente sistema..."
 		feedback_label.add_theme_color_override("font_color", Color("#00ff88"))
@@ -129,13 +236,12 @@ func _on_block_complete():
 		narrative_label.text = "LUNA ha sido reconstruida. Sus sistemas vuelven a la vida."
 		feedback_label.text = "¡Arc II — Intro completada!"
 		feedback_label.add_theme_color_override("font_color", Color("#00ff88"))
-		luna_status.color = Color("#00ff88")
 		cursor_bar.visible = false
 		input_field.editable = false
+		_update_blocks_progress()
 
 func _update_progress():
 	var lines = blocks[current_block]["lines"]
-	progress_label.text = "Bloque %d/%d — Línea %d/%d" % [
-		current_block + 1, blocks.size(),
-		current_line_index + 1, lines.size()
+	progress_label.text = "BLOCK %d/%d" % [
+		current_block + 1, blocks.size()
 	]

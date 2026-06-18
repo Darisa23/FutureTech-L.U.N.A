@@ -186,6 +186,7 @@ _data = {
 
 [node name="LUNA" type="CharacterBody2D"]
 z_index = 2
+position = Vector2(-2, -268)
 script = SubResource("GDScript_ldgj3")
 
 [node name="Torso" type="Sprite2D" parent="."]
