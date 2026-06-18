@@ -1,0 +1,150 @@
+[gd_scene load_steps=7 format=3 uid="uid://dss87kqoda2my"]
+
+[ext_resource type="Shader" uid="uid://clvg7ks11bj0x" path="res://Scenes/menu/main_menu.gdshader" id="1_ufr4i"]
+[ext_resource type="Script" uid="uid://dcdsp05al3bq8" path="res://Scenes/menu/main_menu.gd" id="1_ygw4n"]
+[ext_resource type="Shader" uid="uid://b8h33xjofcq4u" path="res://Scenes/menu/main_menu1.gdshader" id="2_uffod"]
+[ext_resource type="Script" uid="uid://sb041q3o7iy4" path="res://Scenes/menu/glow_particles.gd" id="3_uffod"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ygw4n"]
+shader = ExtResource("1_ufr4i")
+shader_parameter/line_color = Color(0.29, 0.62, 1, 0.03)
+shader_parameter/grid_size = 40.0
+shader_parameter/screen_size = Vector2(1152, 648)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_655o3"]
+shader = ExtResource("2_uffod")
+shader_parameter/speed = 0.4
+shader_parameter/alpha = 0.04
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_ygw4n")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="BGControl" type="Control" parent="BackgroundLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BGColor" type="ColorRect" parent="BackgroundLayer/BGControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0313726, 0.0392157, 0.0784314, 1)
+
+[node name="GridShader" type="ColorRect" parent="BackgroundLayer/BGControl"]
+material = SubResource("ShaderMaterial_ygw4n")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScanLine" type="ColorRect" parent="BackgroundLayer/BGControl"]
+material = SubResource("ShaderMaterial_655o3")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GlowParticles" type="Node2D" parent="BackgroundLayer"]
+script = ExtResource("3_uffod")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="UIControl" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LeftPanel" type="VBoxContainer" parent="UILayer/UIControl"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameTag" type="Label" parent="UILayer/UIControl/LeftPanel"]
+layout_mode = 2
+
+[node name="GameTitle" type="Label" parent="UILayer/UIControl/LeftPanel"]
+layout_mode = 2
+
+[node name="GameSub" type="Label" parent="UILayer/UIControl/LeftPanel"]
+layout_mode = 2
+
+[node name="ButtonGroup" type="VBoxContainer" parent="UILayer/UIControl/LeftPanel"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="UILayer/UIControl/LeftPanel/ButtonGroup"]
+layout_mode = 2
+
+[node name="IconLabel" type="Label" parent="UILayer/UIControl/LeftPanel/ButtonGroup/PlayButton"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "▶"
+
+[node name="SettingsButton" type="Button" parent="UILayer/UIControl/LeftPanel/ButtonGroup"]
+layout_mode = 2
+
+[node name="IconLabel" type="Label" parent="UILayer/UIControl/LeftPanel/ButtonGroup/SettingsButton"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "◈"
+
+[node name="QuitButton" type="Button" parent="UILayer/UIControl/LeftPanel/ButtonGroup"]
+layout_mode = 2
+
+[node name="IconLabel" type="Label" parent="UILayer/UIControl/LeftPanel/ButtonGroup/QuitButton"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "×"
+
+[node name="RightPanel" type="Panel" parent="UILayer/UIControl"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LunaSprite" type="AnimatedSprite2D" parent="UILayer/UIControl/RightPanel"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UIControl/RightPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LunaLabel" type="Label" parent="UILayer/UIControl/RightPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="StatusLabel" type="Label" parent="UILayer/UIControl/RightPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="BarsContainer" type="VBoxContainer" parent="UILayer/UIControl/RightPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="BarMEM" type="ProgressBar" parent="UILayer/UIControl/RightPanel/VBoxContainer/BarsContainer"]
+layout_mode = 2
+
+[node name="BarSYS" type="ProgressBar" parent="UILayer/UIControl/RightPanel/VBoxContainer/BarsContainer"]
+layout_mode = 2
+
+[node name="BarRED" type="ProgressBar" parent="UILayer/UIControl/RightPanel/VBoxContainer/BarsContainer"]
+layout_mode = 2
+
+[node name="VersionLabel" type="Label" parent="UILayer/UIControl"]
+layout_mode = 2
+offset_left = 415.0
+offset_top = 351.0
+offset_right = 455.0
+offset_bottom = 374.0
