@@ -1,14 +1,14 @@
 [gd_scene load_steps=9 format=3 uid="uid://dss87kqoda2my"]
 
-[ext_resource type="Script" uid="uid://dcdsp05al3bq8" path="res://Scenes/menu/main_menu.gd" id="1_ygw4n"]
-[ext_resource type="Shader" uid="uid://b8h33xjofcq4u" path="res://Scenes/menu/main_menu1.gdshader" id="2_uffod"]
-[ext_resource type="Shader" uid="uid://dgcmdvn56ritj" path="res://shaders/night_sky.gdshader" id="2_ygw4n"]
-[ext_resource type="Script" uid="uid://sb041q3o7iy4" path="res://Scenes/menu/glow_particles.gd" id="3_uffod"]
-[ext_resource type="FontFile" uid="uid://3u1vp3tak8fm" path="res://assets/fonts/Aretha Bridge.ttf" id="5_655o3"]
-[ext_resource type="PackedScene" uid="uid://dpaun1u2l2hvf" path="res://Characters/Luna/Luna.tscn" id="6_kwgaw"]
+[ext_resource type="Script" uid="uid://dcdsp05al3bq8" path="res://Scenes/menu/main_menu.gd" id="1_opfnp"]
+[ext_resource type="Shader" uid="uid://dgcmdvn56ritj" path="res://shaders/night_sky.gdshader" id="2_cp0ys"]
+[ext_resource type="Shader" uid="uid://b8h33xjofcq4u" path="res://Scenes/menu/main_menu1.gdshader" id="3_yhxw7"]
+[ext_resource type="Script" uid="uid://sb041q3o7iy4" path="res://Scenes/menu/glow_particles.gd" id="4_trj04"]
+[ext_resource type="FontFile" uid="uid://3u1vp3tak8fm" path="res://assets/fonts/Aretha Bridge.ttf" id="5_16hvj"]
+[ext_resource type="PackedScene" uid="uid://dpaun1u2l2hvf" path="res://Characters/Luna/Luna.tscn" id="6_vr1f0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ygw4n"]
-shader = ExtResource("2_ygw4n")
+shader = ExtResource("2_cp0ys")
 shader_parameter/color_top = Color(0.298, 0.169, 0.412, 1)
 shader_parameter/color_mid = Color(0.651, 0.38, 0.678, 1)
 shader_parameter/color_bottom = Color(0.651, 0.71, 0.992, 1)
@@ -18,12 +18,12 @@ shader_parameter/star_density = 0.6
 shader_parameter/nebula_strength = 0.35
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_655o3"]
-shader = ExtResource("2_uffod")
+shader = ExtResource("3_yhxw7")
 shader_parameter/speed = 0.4
 shader_parameter/alpha = 0.04
 
 [node name="MainMenu" type="Node2D"]
-script = ExtResource("1_ygw4n")
+script = ExtResource("1_opfnp")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -64,7 +64,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GlowParticles" type="Node2D" parent="BackgroundLayer"]
-script = ExtResource("3_uffod")
+script = ExtResource("4_trj04")
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 layer = 0
@@ -75,6 +75,12 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="LUNA" parent="UILayer/UIControl" instance=ExtResource("6_vr1f0")]
+z_index = 0
+position = Vector2(968, 403)
+rotation = -3.14159
+scale = Vector2(0.04, -0.04)
+
 [node name="LeftPanel" type="VBoxContainer" parent="UILayer/UIControl"]
 layout_mode = 0
 offset_right = 40.0
@@ -82,16 +88,16 @@ offset_bottom = 40.0
 
 [node name="GameTag" type="Label" parent="UILayer/UIControl/LeftPanel"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_655o3")
+theme_override_fonts/font = ExtResource("5_16hvj")
 
 [node name="GameTitle" type="Label" parent="UILayer/UIControl/LeftPanel"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_655o3")
+theme_override_fonts/font = ExtResource("5_16hvj")
 theme_override_font_sizes/font_size = 80
 
 [node name="GameSub" type="Label" parent="UILayer/UIControl/LeftPanel"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_655o3")
+theme_override_fonts/font = ExtResource("5_16hvj")
 
 [node name="ButtonGroup" type="VBoxContainer" parent="UILayer/UIControl/LeftPanel"]
 layout_mode = 2
@@ -159,9 +165,5 @@ offset_left = 415.0
 offset_top = 351.0
 offset_right = 455.0
 offset_bottom = 374.0
-
-[node name="LUNA" parent="." instance=ExtResource("6_kwgaw")]
-position = Vector2(951, 159)
-scale = Vector2(0.1, 0.1)
 
 [connection signal="pressed" from="UILayer/UIControl/LeftPanel/ButtonGroup/PlayButton" to="." method="_on_play_button_pressed"]
