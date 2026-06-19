@@ -68,6 +68,9 @@ func _ready():
 
 	description_label.text = "Estos son fragmentos de la percepción de LUNA. Selecciónalos y haz click en la zona donde crees que pertenecen: los sensores van a ENTRADA, la decisión va a SALIDA."
 
+	var luna = $LUNA  # o get_node("ruta/a/Luna")
+	luna.get_node("AnimationPlayer").play("depresiva")
+	
 	_compute_layout_positions()
 	_create_fragments()
 
