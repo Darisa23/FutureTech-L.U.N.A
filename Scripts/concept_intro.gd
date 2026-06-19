@@ -27,15 +27,18 @@ func _on_choice_selected(_info: Dictionary) -> void:
 	if not _in_quiz:
 		return
 	_correct_this_round = false
-	# Timer en vez de process_frame: Dialogic puede tardar varios frames en ejecutar el set
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().process_frame
+	await get_tree().process_frame
 	if not _in_quiz:
 		return
+	Dialogic.paused = true
 	if not _correct_this_round:
 		shake_textbox()
 		flash_screen(Color(1, 0.1, 0.1, 1.0))
 	else:
 		flash_screen(Color(0.0, 1.0, 0.8, 1.0))
+	await get_tree().create_timer(0.8).timeout
+	Dialogic.paused = false
 
 func _on_variable_set(info: Dictionary) -> void:
 	if not _in_quiz:
@@ -85,7 +88,7 @@ func flash_screen(flash_color: Color) -> void:
 	overlay.modulate.a = 0.0
 	overlay.visible = true
 	var tween := create_tween()
-	tween.tween_property(overlay, "modulate:a", 1.0, 0.3)
+	tween.tween_property(overlay, "modulate:a", 1.0, 0.15)
 	tween.tween_interval(0.2)
 	tween.tween_property(overlay, "modulate:a", 0.0, 0.3)
 	tween.tween_callback(func(): overlay.visible = false)
