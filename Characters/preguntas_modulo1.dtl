@@ -1,8 +1,8 @@
 join vee (happy) center
 vee: Antes de pasar al siguiente módulo tienes que pasar este quiz obligatorio.
 leave vee
-1. ¿Qué es una neurona?
 set {correctans} = 0
+1. ¿Qué es una neurona?
 - A. Una capa completa de la red neuronal.
 - B. Una pequeña unidad que recibe información, la procesa y envía un resultado.
 	set {correctans} += 0.2
@@ -29,10 +29,13 @@ set {correctans} = 0
 5. ¿Qué hace la capa de salida?
 - A. Crea nuevas neuronas para la red.
 - B. Recibe datos de sensores y enemigos.
-- C.  Toma los resultados del análisis y genera una decisión o respuesta.
+- C. Toma los resultados del análisis y genera una decisión o respuesta.
 	set {correctans} += 0.2
 - D. Conecta la red neuronal a internet.
-if {correctans} == 1.0:
+if {correctans} >= 0.6:
 	[signal arg="win"]
 else:
+	join vee (sad) center
+	vee: Necesitas al menos 3 respuestas correctas. ¡Vamos a intentarlo de nuevo!
+	leave vee
 	[signal arg="fail"]

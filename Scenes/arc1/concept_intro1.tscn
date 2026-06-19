@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgckqgng5xoe6"]
+[gd_scene load_steps=5 format=3 uid="uid://bgckqgng5xoe6"]
 
 [ext_resource type="Script" uid="uid://dxp17y50t2qfv" path="res://Scripts/concept_intro.gd" id="1_8c7d0"]
 [ext_resource type="Texture2D" uid="uid://5gfi0u6l6qb" path="res://assets/Backgrounds/pillars of cosmic.jpg" id="2_gyprc"]
+[ext_resource type="Shader" uid="uid://k8yf8d2goxvw" path="res://Scenes/arc1/Extras/ZoneInput.gdshader" id="2_x8oul"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gyprc"]
+shader = ExtResource("2_x8oul")
+shader_parameter/color = Color(0.29, 0.62, 1, 1)
+shader_parameter/scan_speed = 0.4
+shader_parameter/line_alpha = 0.03
+shader_parameter/line_gap = 6.0
+shader_parameter/band_alpha = 0.12
+shader_parameter/fresnel_alpha = 0.18
+shader_parameter/fresnel_size = 0.08
+shader_parameter/glitch_threshold = 0.997
 
 [node name="ConceptIntro1" type="Node2D"]
 script = ExtResource("1_8c7d0")
@@ -10,5 +22,15 @@ script = ExtResource("1_8c7d0")
 offset_right = 1153.0
 offset_bottom = 649.0
 texture = ExtResource("2_gyprc")
+
+[node name="GlitchOverlay" type="ColorRect" parent="Background"]
+visible = false
+material = SubResource("ShaderMaterial_gyprc")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Node2D" type="Node2D" parent="."]
