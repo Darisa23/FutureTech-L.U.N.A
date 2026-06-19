@@ -17,6 +17,15 @@
 &"nicknames": [""],
 &"offset": Vector2(0, -250),
 &"portraits": {
+"determined": {
+"export_overrides": {
+"image": "\"res://assets/Vee/Vee_determined.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
 "happy": {
 "export_overrides": {
 "image": "\"res://assets/Vee/Vee_happy.png\""
@@ -29,6 +38,15 @@
 "sad": {
 "export_overrides": {
 "image": "\"res://assets/Vee/Vee_sad.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"scared": {
+"export_overrides": {
+"image": "\"res://assets/Vee/Vee_scared.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),

@@ -1,0 +1,25 @@
+[background arg="res://assets/Backgrounds/bg_repair_bay.png" fade="0.0"]
+join LUNA left [animation="Slide From Left" extra_data="set torso/head/eyes/locked, set hair_bottom/saturated, hide torso/head/shade, set torso/head/mouth/talking, set torso/head/eyebrows/medium, set torso/head/hair_top/saturated, set torso/arm_right/staff/full, set torso/skirt_front/skirt_back/full"]
+LUNA: Muchas gracias arquitecta, gracias a tí mis sensores están de vuelta a la-
+[background scene="res://assets/Backgrounds/GifBackground.tscn" fade="0.0"]
+update LUNA [extra_data="set torso/head/eyes/open, set hair_bottom/saturated, hide torso/head/mouth/talking,set torso/head/mouth/sad, set torso/head/eyebrows/low, set torso/head/hair_top/saturated, set torso/arm_right/staff/full, set torso/skirt_front/skirt_back/full"]
+join vee (scared) right [animation="Slide From Right"]
+vee: ¡Arquitecta! ¡Los sensores externos están enloqueciendo! ¡Los Corruptos no están esperando, acaban de lanzar un ataque masivo contra los muros de fuego de la capital!
+vee (sad): ¡Están intentando infiltrarse en la Bahía de Reparación! ¡Si llegan a LUNA antes de que terminemos su ciclo de entrenamiento, la perderemos para siempre!
+leave LUNA [animation="Instant Out" length="0.0"]
+leave vee [animation="Instant Out" length="0.0"]
+[background arg="#000000ff" fade="0.0"]
+audio "res://Characters/glass_shattering.mp3"
+ADVERTENCIA. SOBRECARGA EN LA INTERFAZ DE DIAGNÓSTICO. MÓDULO VISUAL DESTRUIDO.
+[background arg="res://assets/Backgrounds/luna_break_0.png" fade="0.5" wait="true"]
+[background arg="res://assets/Backgrounds/luna_break_1.png" fade="0.5" wait="true"]
+[background arg="res://assets/Backgrounds/luna_break_0.png" fade="0.5" wait="true"]
+[background arg="res://assets/Backgrounds/luna_break_1.png" fade="0.5" wait="true"]
+[background arg="res://assets/Backgrounds/luna_break_2.png" fade="1.0" wait="true"]
+[background arg="res://assets/Backgrounds/luna_break_3.png" fade="0.9" wait="true"]
+[background scene="res://assets/Backgrounds/GifBackground.tscn" fade="0.0"]
+join vee (scared) center
+vee: ¡No, no, no! ¡El ataque frió la consola de diagnóstico! Las pantallas táctiles, los deslizadores de pesos, los cables... ¡Todo el entorno visual se ha desintegrado!
+vee (sad): Arquitecta, escúchame. Ya no tenemos las herramientas de entrenamiento.
+vee (shock): La única forma de comunicarnos con el núcleo de LUNA a tiempo es hablar en su idioma nativo. Lógica pura. Código en bruto.
+vee (determined): Sé que asusta, pero piénsalo\: ya sabes exactamente cómo funciona su mente. Has construido sus capas, has balanceado sus pesos y has ajustado sus filtros de activación. El código es solo la forma de escribir lo que ya tienes en tu cabeza.

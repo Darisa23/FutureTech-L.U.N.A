@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2apgi72k10bt"]
+
+[ext_resource type="Script" uid="uid://blsjcvm6gvd78" path="res://addons/dialogic/Modules/Background/dialogic_background.gd" id="1_50efm"]
+[ext_resource type="Texture2D" uid="uid://b35emm38lyutq" path="res://assets/Backgrounds/bg_repair_bay.tres" id="1_wn7w7"]
+
+[node name="GifBackground" type="Node"]
+script = ExtResource("1_50efm")
+metadata/_custom_type_script = "uid://blsjcvm6gvd78"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_wn7w7")
+expand_mode = 1
+stretch_mode = 6

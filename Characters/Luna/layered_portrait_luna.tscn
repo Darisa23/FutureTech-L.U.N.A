@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ck2h2ehcp6dka"]
+[gd_scene load_steps=33 format=3 uid="uid://ck2h2ehcp6dka"]
 
 [ext_resource type="Script" uid="uid://cfwf5d8exox4f" path="res://addons/dialogic/Modules/LayeredPortrait/custom_layered_portrait.gd" id="1_7g1e5"]
 [ext_resource type="Texture2D" uid="uid://cwhodivf2nkoq" path="res://assets/LUNA/hair_back_saturated.png" id="2_tt71t"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://ps1pfioh4n38" path="res://assets/LUNA/eyes_happy.png" id="17_x8c6g"]
 [ext_resource type="Texture2D" uid="uid://b21mdgyijdslc" path="res://assets/LUNA/eyes_sad.png" id="18_w3o6f"]
 [ext_resource type="Texture2D" uid="uid://bfabh7cca2c2x" path="res://assets/LUNA/eyes_closed.png" id="19_0pa7e"]
+[ext_resource type="Texture2D" uid="uid://bvlsjp0m2vv6x" path="res://assets/LUNA/eyes_locked.png" id="20_tt71t"]
 [ext_resource type="Texture2D" uid="uid://c2u6lb20ffwbl" path="res://assets/LUNA/shade_face.png" id="20_ysvqw"]
 [ext_resource type="Texture2D" uid="uid://b14f2jxp3mf10" path="res://assets/LUNA/top_saturated.png" id="21_vim0k"]
 [ext_resource type="Texture2D" uid="uid://dige6hemnr3n2" path="res://assets/LUNA/top_desaturated.png" id="22_nf7f8"]
@@ -203,6 +204,10 @@ frame_progress = 1.0
 visible = false
 position = Vector2(0, 25)
 texture = ExtResource("19_0pa7e")
+
+[node name="locked" type="Sprite2D" parent="torso/head/eyes"]
+visible = false
+texture = ExtResource("20_tt71t")
 
 [node name="tired" type="Sprite2D" parent="torso/head/eyes"]
 visible = false

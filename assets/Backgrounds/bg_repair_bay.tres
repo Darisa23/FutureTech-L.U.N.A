@@ -1,0 +1,10 @@
+[gd_resource type="AnimatedTexture" load_steps=3 format=3 uid="uid://b35emm38lyutq"]
+
+[ext_resource type="Texture2D" uid="uid://545lng7vfegh" path="res://assets/Backgrounds/bg_repair_bay.png" id="1_kwhnw"]
+[ext_resource type="Texture2D" uid="uid://c37okswmgejey" path="res://assets/Backgrounds/bg_repair_bay_red.png" id="2_1tkj4"]
+
+[resource]
+frames = 2
+frame_0/texture = ExtResource("1_kwhnw")
+frame_1/texture = ExtResource("2_1tkj4")
+frame_1/duration = 1.0
