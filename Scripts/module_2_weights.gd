@@ -194,7 +194,7 @@ func _on_next_pressed():
 		feedback_label.add_theme_color_override("font_color", Color("#00ff88"))
 		next_button.visible = true
 		await get_tree().create_timer(3).timeout
-		get_tree().change_scene_to_file("res://Scenes/arc2/Arc2_Terminal.tscn")
+		get_tree().change_scene_to_file("res://Scenes/arc2/the_collapse.tscn")
 
 
 func _draw():

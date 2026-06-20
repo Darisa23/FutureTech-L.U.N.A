@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://da38v8d2yc1fk"]
+
+[ext_resource type="Script" uid="uid://cujgeb4j0q4kc" path="res://Scripts/the_collapse.gd" id="1_it1kq"]
+
+[node name="TheCollapse" type="Node2D"]
+script = ExtResource("1_it1kq")
