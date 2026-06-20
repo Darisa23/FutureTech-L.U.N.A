@@ -13,7 +13,7 @@ config_version=5
 config/name="Project L.U.N.A"
 run/main_scene="uid://cpcdaskan0c8i"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://dws2mb8f4sg53"
 
 [autoload]
 
@@ -77,6 +77,11 @@ audio/channel_defaults={
 variables={
 "correctans": 0
 }
+
+[display]
+
+window/size/mode=3
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 

@@ -6,7 +6,7 @@ var current_line_index = 0
 var typing_line: TypingLine
 var cursor_visible = true
 var blink_timer = 0.0
-const SyntaxClassifier = preload("res://scripts/typing/SyntaxClassifier.gd")
+const SyntaxClassifier = preload("res://Scripts/typing/SyntaxClassifier.gd")
 
 # --- Métricas de accuracy ---
 var total_chars_typed = 0

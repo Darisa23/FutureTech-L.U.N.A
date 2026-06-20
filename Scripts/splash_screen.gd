@@ -115,7 +115,7 @@ func _skip_to_menu():
 	if skipped:
 		return
 	skipped = true
-	get_tree().change_scene_to_file("res://Scenes/menu/main_menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
 func _play_sequence():
 	# 1. La luna sube y aparece (fade + movimiento con ease)

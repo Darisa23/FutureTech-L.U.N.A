@@ -1,7 +1,7 @@
 class_name TypingLine
 extends RefCounted
 
-const SyntaxClassifier = preload("res://scripts/typing/SyntaxClassifier.gd")
+const SyntaxClassifier = preload("res://Scripts/typing/SyntaxClassifier.gd")
 
 #const CURSOR_COLOR = "#dcdcaa"
 

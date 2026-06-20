@@ -287,7 +287,7 @@ func _on_next_pressed():
 		_cambiar_a_siguiente_escena()
 
 func _cambiar_a_siguiente_escena():
-	var ruta_siguiente_escena = "res://scenes/arc1/concept_intro2.tscn" 
+	var ruta_siguiente_escena = "res://Scenes/arc1/concept_intro2.tscn" 
 	
 	get_tree().change_scene_to_file(ruta_siguiente_escena)
 
