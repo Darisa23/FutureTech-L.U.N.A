@@ -3,6 +3,7 @@ extends Node
 var _last_correctans := 0.0
 var _in_quiz := false
 var _correct_this_round := false
+var _choice_processing := false
 
 func _ready():
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
@@ -26,10 +27,12 @@ func _on_timeline_ended():
 func _on_choice_selected(_info: Dictionary) -> void:
 	if not _in_quiz:
 		return
+	_choice_processing = true
 	_correct_this_round = false
 	await get_tree().process_frame
 	await get_tree().process_frame
 	if not _in_quiz:
+		_choice_processing = false
 		return
 	Dialogic.paused = true
 	if not _correct_this_round:
@@ -39,6 +42,7 @@ func _on_choice_selected(_info: Dictionary) -> void:
 		flash_screen(Color(0.0, 1.0, 0.8, 1.0))
 	await get_tree().create_timer(0.8).timeout
 	Dialogic.paused = false
+	_choice_processing = false
 
 func _on_variable_set(info: Dictionary) -> void:
 	if not _in_quiz:
@@ -58,6 +62,8 @@ func _on_quiz_signal(arg: String) -> void:
 	if arg == "fail":
 		_restart_quiz()
 	else:
+		while _choice_processing:
+			await get_tree().process_frame
 		if self.name == "ConceptIntro1":
 			get_tree().change_scene_to_file("res://Scenes/arc1/module_1_layers.tscn")
 		elif self.name == "ConceptIntro2":
@@ -67,6 +73,7 @@ func _restart_quiz() -> void:
 	_in_quiz = true
 	_last_correctans = 0.0
 	_correct_this_round = false
+	_choice_processing = false
 	Dialogic.VAR.variable_was_set.connect(_on_variable_set)
 	Dialogic.Choices.choice_selected.connect(_on_choice_selected)
 	Dialogic.signal_event.connect(_on_quiz_signal)

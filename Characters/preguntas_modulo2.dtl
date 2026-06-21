@@ -1,8 +1,8 @@
 join vee (happy) center
 vee: Antes de pasar al siguiente módulo tienes que pasar este quiz obligatorio.
 leave vee
-1.¿Qué es un peso?
 set {correctans} = 0
+1.¿Qué es un peso?
 - A. Una neurona especial que toma decisiones.
 - B.  Un valor que indica qué tan importante es una información para la red neuronal.
 	set {correctans} += 0.2
@@ -32,7 +32,10 @@ set {correctans} = 0
 	set {correctans} += 0.2
 - C. Que las flores son peligrosas.
 - D. Que la red neuronal dejará de analizar la información.
-if {correctans} == 1.0:
+if {correctans} >= 0.6:
 	[signal arg="win"]
 else:
+	join vee (sad) center
+	vee: Necesitas al menos 3 respuestas correctas. ¡Vamos a intentarlo de nuevo!
+	leave vee
 	[signal arg="fail"]
