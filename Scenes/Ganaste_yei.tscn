@@ -1,0 +1,130 @@
+[gd_scene load_steps=10 format=3 uid="uid://bk3am5obdwvbi"]
+
+[ext_resource type="Shader" uid="uid://dgcmdvn56ritj" path="res://shaders/night_sky.gdshader" id="1_hxlnm"]
+[ext_resource type="Script" uid="uid://dsa2uy4ge10qe" path="res://Scenes/ganaste_yei.gd" id="1_sxu2m"]
+[ext_resource type="Shader" uid="uid://b8h33xjofcq4u" path="res://Scenes/menu/main_menu1.gdshader" id="2_sxu2m"]
+[ext_resource type="Script" uid="uid://sb041q3o7iy4" path="res://Scenes/menu/glow_particles.gd" id="3_86okf"]
+[ext_resource type="Script" uid="uid://p40ajyonxqx7" path="res://Scenes/rich_text_label.gd" id="4_bgorj"]
+[ext_resource type="Texture2D" uid="uid://dxi7gwf58ue8p" path="res://MARCOWIN.png" id="6_86okf"]
+[ext_resource type="FontFile" uid="uid://3u1vp3tak8fm" path="res://assets/fonts/Aretha Bridge.ttf" id="6_bgorj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ujoqe"]
+shader = ExtResource("1_hxlnm")
+shader_parameter/color_top = Color(0.298, 0.169, 0.412, 1)
+shader_parameter/color_mid = Color(0.651, 0.38, 0.678, 1)
+shader_parameter/color_bottom = Color(0.651, 0.71, 0.992, 1)
+shader_parameter/nebula_color_a = Color(0.988, 0.651, 0.82, 1)
+shader_parameter/nebula_color_b = Color(0.714, 0.937, 0.984, 1)
+shader_parameter/star_density = 0.6
+shader_parameter/nebula_strength = 0.35
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_isb1n"]
+shader = ExtResource("2_sxu2m")
+shader_parameter/speed = 0.4
+shader_parameter/alpha = 0.04
+
+[node name="GanasteYei" type="Node2D"]
+script = ExtResource("1_sxu2m")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="BGControl" type="Control" parent="BackgroundLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BGColor" type="ColorRect" parent="BackgroundLayer/BGControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0313726, 0.0392157, 0.0784314, 1)
+
+[node name="GridShader" type="ColorRect" parent="BackgroundLayer/BGControl"]
+material = SubResource("ShaderMaterial_ujoqe")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScanLine" type="ColorRect" parent="BackgroundLayer/BGControl"]
+material = SubResource("ShaderMaterial_isb1n")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GlowParticles" type="Node2D" parent="BackgroundLayer"]
+script = ExtResource("3_86okf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -689.225
+offset_top = -361.5
+offset_right = 689.225
+offset_bottom = 361.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_86okf")
+expand_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -307.0
+offset_top = -150.0
+offset_right = 307.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(0.482286, 0.49344, 0.482599, 1)
+theme_override_fonts/normal_font = ExtResource("6_bgorj")
+theme_override_font_sizes/normal_font_size = 60
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 0
+script = ExtResource("4_bgorj")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -355.5
+offset_top = -19.0
+offset_right = 355.5
+offset_bottom = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.44271, 0.386354, 0.605862, 1)
+theme_override_fonts/normal_font = ExtResource("6_bgorj")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = " [center]Felicidades haz logrado rescatar a LUNA[/center]"
+fit_content = true
+scroll_active = false
+script = ExtResource("4_bgorj")

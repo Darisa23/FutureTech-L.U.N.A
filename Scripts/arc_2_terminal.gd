@@ -239,6 +239,8 @@ func _on_block_complete():
 		cursor_bar.visible = false
 		input_field.editable = false
 		_update_blocks_progress()
+		await get_tree().create_timer(2.5).timeout  # tiempo para que el jugador lea el mensaje final
+		get_tree().change_scene_to_file("res://Scenes/Ganaste_yei.tscn")	
 
 func _update_progress():
 	var lines = blocks[current_block]["lines"]
